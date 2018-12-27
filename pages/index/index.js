@@ -20,6 +20,7 @@ Page({
     duration: 1000,
     circular: true,
     goodsSorts: [],//分类
+    current: 0,//分类Index
   },
   //事件处理函数
   bindViewTap: function() {
@@ -57,16 +58,23 @@ Page({
 
     //分类
     wx.request({
-        url: "https://www.easy-mock.com/mock/5a223b51707056548f086d8b/hema/index_goodsSort",
+        url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/all_sort",
         success: (res) => {
-            this.setData({
-                goodsSorts: res.data.data.sorts
-            })
+          if (res.data.success == 'true') {
+              this.data.goodsSorts[0] = res.data.data.splice(0,10);
+              this.data.goodsSorts[1] = res.data.data;
+              this.setData({
+                  goodsSorts: this.data.goodsSorts
+              })
+          }
         }
     });
   },
+  intervalChange(e) {//滑动分类
+      this.setData({current: e.detail.current,})
+  },
   getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo
+    app.globalData.userInfo = e.detail.userInfo;
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true

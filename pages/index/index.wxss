@@ -83,6 +83,9 @@
   width: 100%;
   background: #fff;
 }
+.home-sorts {
+  padding-bottom: 10rpx;
+}
 .home-sorts ul {
   height:320rpx;
   display: block;
@@ -105,8 +108,23 @@
   width:90rpx;
   height:90rpx;
   border-radius:100rpx;
+  overflow: hidden;
 }
 .home-sorts p {
   font-size:24rpx;
   color:#535353;
+}
+.home-sorts .sorts-current {
+  text-align: center;
+  height: 40rpx;
+}
+.home-sorts .sorts-current span {
+  display: inline-block;
+  width: 30rpx;
+  height: 4rpx;
+  background: #eee;
+  margin: 0 6rpx;
+}
+.home-sorts .sorts-current span.active {
+  background: #999;
 }

@@ -26,15 +26,25 @@
     盒马云超市来啦！0门槛包邮！上海外环内可包邮到家！
   </view>
   <view class="home-sorts">
-    <ul class="center">
-      <block wx:for="{{goodsSorts}}" wx:key="index" wx:for-index="index">
-        <li class="left">
-          <view class="sort_image {{item.style}}">
-            <image src="{{item.imgSrc}}" alt=""/>
-          </view>
-          <p>{{item.text}}</p>
-        </li>
+    <swiper interval="{{interval}}"  duration="500" bindchange="intervalChange">
+      <block wx:for="{{goodsSorts}}" wx:key="index" wx:for-index="index" wx:for-item="element">
+        <swiper-item>
+          <ul class="center">
+            <block wx:for="{{element}}" wx:key="index" wx:for-index="index" >
+              <li class="left">
+                <view class="sort_image {{item.style}}">
+                  <image src="{{item.icon}}" alt=""/>
+                </view>
+                <p>{{item.name}}</p>
+              </li>
+            </block>
+          </ul>
+        </swiper-item>
       </block>
-    </ul>
+    </swiper>
+    <view class="sorts-current">
+      <span class="{{current == 0? 'active' : ''}}"></span>
+      <span class="{{current == 1? 'active' : ''}}"></span>
+    </view>
   </view>
 </view>
