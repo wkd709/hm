@@ -10,5 +10,31 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view> -->
-  
+  <view class="search-input">
+      <view type='text' class="iconfont icon-sousuo"></view>
+      <input placeholder-class="input-placeholder" placeholder="请输入关键字进行搜索"/>
+  </view>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" >
+    <block wx:for="{{slideList}}" wx:key="index" wx:for-index="index">
+      <swiper-item>
+        <image src="{{item.img}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="notice-view">
+    <span class="iconfont icon-gonggao"></span>
+    盒马云超市来啦！0门槛包邮！上海外环内可包邮到家！
+  </view>
+  <view class="home-sorts">
+    <ul class="center">
+      <block wx:for="{{goodsSorts}}" wx:key="index" wx:for-index="index">
+        <li class="left">
+          <view class="sort_image {{item.style}}">
+            <image src="{{item.imgSrc}}" alt=""/>
+          </view>
+          <p>{{item.text}}</p>
+        </li>
+      </block>
+    </ul>
+  </view>
 </view>

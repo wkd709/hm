@@ -1,21 +1,112 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.be8159 {
+  background-color: #be8159;
+}
+.a1b1ca {
+  background-color: #a1b1ca;
+}
+.ffc793 {
+  background-color: #ffc793;
+}
+.c2d971 {
+  background-color: #c2d971;
+}
+.f5cb8d {
+  background-color: #f5cb8d;
+}
+.c83d7f4 {
+  background-color: #83d7f4;
+}
+.ff9292 {
+  background-color: #ff9292;
+}
+.c2ec4c6 {
+  background-color: #2ec4c6;
+}
+.c8599b9 {
+  background-color: #8599b9;
+}
+.f3d24c {
+  background-color: #f3d24c;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.search-input {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+  position: relative;
+}
+.search-input input {
+  border: 2rpx solid #ddd;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 0 60rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+}
+.search-input .iconfont {
+  position: absolute;
+  top: 17px;
+  left: 20rpx;
+  color: #999;
+}
+.slide-image {
+  width: 100%;
+  height: 300rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.notice-view {
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 100%;
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  font-size: 30rpx;
+  color: #999;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.notice-view .iconfont {
+  color: #ff5553;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  float: left;
 }
 
-.usermotto {
-  margin-top: 200px;
+.home-sorts,.home-sorts ul {
+  width: 100%;
+  background: #fff;
+}
+.home-sorts ul {
+  height:320rpx;
+  display: block;
+  margin-left:24rpx;
+}
+.home-sorts li {
+  width:100rpx;
+  height:144rpx;
+  margin-top:10rpx;
+  margin-right:50rpx;
+}
+.home-sorts image {
+  width:96rpx;
+  height:96rpx;
+  transform:rotate(-45deg);
+  border-bottom-left-radius:100rpx;
+  border-bottom-right-radius:100rpx;
+}
+.home-sorts .sort_image{
+  width:90rpx;
+  height:90rpx;
+  border-radius:100rpx;
+}
+.home-sorts p {
+  font-size:24rpx;
+  color:#535353;
 }

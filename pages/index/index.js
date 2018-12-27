@@ -1,13 +1,25 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    slideList: [
+      {img:'https://gw.alicdn.com/tfs/TB1AoIXeLDH8KJjy1XcXXcpdXXa-750-291.jpg_Q90.jpg'},
+      {img:'https://img.alicdn.com/imgextra/i1/771510470/TB21SB0fIbI8KJjy1zdXXbe1VXa-771510470.jpg_Q90.jpg'},
+      {img:'https://img.alicdn.com/imgextra/i2/745949152/TB2ATrSexPI8KJjSspfXXcCFXXa_!!745949152.jpg_Q90.jpg'},
+      {img:'https://img.alicdn.com/tfs/TB1OYB8elfH8KJjy1XbXXbLdXXa-750-291.jpg_Q90.jpg'},
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    circular: true,
+    goodsSorts: [],//分类
   },
   //事件处理函数
   bindViewTap: function() {
@@ -42,13 +54,22 @@ Page({
         }
       })
     }
+
+    //分类
+    wx.request({
+        url: "https://www.easy-mock.com/mock/5a223b51707056548f086d8b/hema/index_goodsSort",
+        success: (res) => {
+            this.setData({
+                goodsSorts: res.data.data.sorts
+            })
+        }
+    });
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   }
-})
+});

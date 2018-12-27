@@ -1,12 +1,47 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/sort/sort",
+    "pages/shopping/shopping",
+    "pages/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "盒马鲜生平台",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff5553",
+    "color": "#9f9f9f",
+    "backgroundColor": "#ffff",
+    "borderStyle": "#c8c7cc",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./assets/icons/icon_home.png",
+        "selectedIconPath": "./assets/icons/icon_home_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "iconPath": "./assets/icons/icon_sort.png",
+        "selectedIconPath": "./assets/icons/icon_sort_select.png",
+        "text": "全部分类"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "iconPath": "./assets/icons/icon_shopping.png",
+        "selectedIconPath": "./assets/icons/icon_shopping_select.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "./assets/icons/icon_user.png",
+        "selectedIconPath": "./assets/icons/icon_user_select.png",
+        "text": "我的"
+      }
+    ]
   }
 }
