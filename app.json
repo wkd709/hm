@@ -7,7 +7,7 @@
     "pages/user/user"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "盒马鲜生平台",
     "navigationBarTextStyle":"black"

@@ -29,12 +29,35 @@
 .f3d24c {
   background-color: #f3d24c;
 }
-
-.search-input {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20rpx 0;
+.top-view-home {
+    padding: 20rpx 0;
+    overflow: hidden;
+}
+.top-view-home  .area-box {
+  background: #fff;
+  line-height: 60rpx;
+  height: 58rpx;
+  float: left;
+  margin: 0 20rpx;
+  padding: 0 10rpx;
+  padding-right: 45rpx;
+  font-size: 32rpx;
+  border-radius: 5rpx;
+  max-width: 180rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+  box-sizing: border-box;
   position: relative;
+}
+.top-view-home  .area-box span {
+  position: absolute;
+  right: 10rpx;
+}
+.search-input {
+  width:65%;
+  position:relative;
+  float:left;
 }
 .search-input input {
   border: 2rpx solid #ddd;
@@ -43,12 +66,12 @@
   box-sizing: border-box;
   padding: 0 60rpx;
   font-size: 30rpx;
-  line-height: 60rpx;
+  line-height: 58rpx;
   height: 60rpx;
 }
 .search-input .iconfont {
   position: absolute;
-  top: 17px;
+  top: 15rpx;
   left: 20rpx;
   color: #999;
 }
@@ -122,7 +145,7 @@
   display: inline-block;
   width: 30rpx;
   height: 4rpx;
-  background: #eee;
+  background: #ddd;
   margin: 0 6rpx;
 }
 .home-sorts .sorts-current span.active {

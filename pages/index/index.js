@@ -1,13 +1,14 @@
 //index.js
+
+const util = require('../../utils/util.js');
+const config = require('../../utils/config.js');
+const QQMapWX = require('../../libs/qqmap-wx-jssdk.js'); //地图
+
 //获取应用实例
 const app = getApp();
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     slideList: [
       {img:'https://gw.alicdn.com/tfs/TB1AoIXeLDH8KJjy1XcXXcpdXXa-750-291.jpg_Q90.jpg'},
       {img:'https://img.alicdn.com/imgextra/i1/771510470/TB21SB0fIbI8KJjy1zdXXbe1VXa-771510470.jpg_Q90.jpg'},
@@ -21,63 +22,106 @@ Page({
     circular: true,
     goodsSorts: [],//分类
     current: 0,//分类Index
+    qqmapsdk: '',//地图
+    mapInfo: {},//地理位置
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  onPullDownRefresh:function() {//监听下拉事件
+    // wx.stopPullDownRefresh();//停止当前页面下拉刷新
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-
-    //分类
-    wx.request({
-        url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/all_sort",
-        success: (res) => {
-          if (res.data.success == 'true') {
-              this.data.goodsSorts[0] = res.data.data.splice(0,10);
-              this.data.goodsSorts[1] = res.data.data;
-              this.setData({
-                  goodsSorts: this.data.goodsSorts
+    var self = this;
+    // 获取用户设置 第一次进入时 res.authSetting={} 
+    wx.getSetting({
+      success(res) {
+        console.log(res);
+        var data = JSON.stringify(res.authSetting);
+        if (data != '{}') {// !== "{}" 代表不是第一次进入
+          if (!res.authSetting['scope.userLocation']) {//未授权获取地址
+            util
+              .showModal('请求授权当前位置','需要获取您的地理位置，请确认授权')
+              .then(res=> {
+                self.setting();
               })
+              .catch((err) => {
+                util.showToast('授权失败', false);
+              });
+          } else {
+            self.getArea();
           }
+        } else {//第一次进入
+          self.getArea();
         }
+      }
+    })
+
+    this.getData();
+
+    //初始化地图
+    var qqmapsdk = new QQMapWX({
+      key: config.txMapKey
+    });
+    this.setData({qqmapsdk: qqmapsdk});
+  },
+  map(latitude, longitude) {
+    var self = this;
+    this.data.qqmapsdk.reverseGeocoder({
+      location: {
+        latitude: latitude,
+        longitude: longitude
+      },
+      success: function(res){
+        if (res.status == 0) {
+          var data = res.result.ad_info;
+          self.setData({ mapInfo: data });
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+      }
     });
   },
-  intervalChange(e) {//滑动分类
-      this.setData({current: e.detail.current,})
+  getData() {//获取接口数据
+    //分类
+    wx.request({
+      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/all_sort",
+      success: (res) => {
+        if (res.data.success == 'true') {
+          this.data.goodsSorts[0] = res.data.data.splice(0, 10);
+          this.data.goodsSorts[1] = res.data.data;
+          this.setData({
+            goodsSorts: this.data.goodsSorts
+          })
+        }
+      }
+    });
   },
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo;
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  getArea() {//获取当前位置
+   var self = this;
+    wx.getLocation({
+      type: 'gcj02',
+      altitude: true,
+      success(res) {
+        const latitude = res.latitude;
+        const longitude = res.longitude;
+        const speed = res.speed;
+        const accuracy = res.accuracy;
+        self.map(latitude,longitude);
+      },
+      fail(err) {
+      }
     })
-  }
+  },
+  setting() {//设置授权
+    var self = this;
+    wx.openSetting({
+      success(res) {
+        if (res.authSetting['scope.userLocation']) {//授权获取地址成功
+          self.getArea();
+        }
+      }
+    })
+  },
+  intervalChange(e) {//滑动分类
+    this.setData({ current: e.detail.current, })
+  },
 });
