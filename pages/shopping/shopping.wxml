@@ -1,0 +1,127 @@
+<view class='container'>
+  <view class='default-shopping' wx:if='{{!shopping}}'>
+    <image src='../../assets/images/empty.png'></image>
+    <p>您的购物车中没有商品哦!</p>
+    <button class='back-home'>去首页逛逛吧</button>
+  </view>
+  <view class='shopping' wx:if='{{shopping}}'>
+    <view class='top'>
+      <view class='total'>共31件宝贝</view>
+      <view class='change'><span>管理</span></view>
+    </view>
+    <view class='order-list'>
+      <view class='total-shop'>
+        <icon class='iconfont icon-shouye1'></icon>
+        天猫超市
+      </view>
+      <view class='grid-main'>
+        <span class='select'>
+          <icon type="success" color="red" size='20'></icon>
+        </span>
+        <view class='order-des'>
+          <image class='img' src='//img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
+          <view class='des'>
+            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
+            <view class='bottom'>
+              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
+              <view class="ui-number">
+                <a class="decrease disabled" >-</a>
+                <input type="number" class="num" />
+                <a class="increase">+</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='grid-main'>
+        <span class='select'>
+          <icon type="success" color="red" size='20'></icon>
+        </span>
+        <view class='order-des'>
+          <image class='img' src='//img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
+          <view class='des'>
+            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
+            <view class='bottom'>
+              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
+              <view class="ui-number">
+                <a class="decrease disabled" >-</a>
+                <input type="number" class="num" />
+                <a class="increase">+</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='order-list'>
+      <view class='total-shop'>
+        <icon class='iconfont icon-shouye1'></icon>
+        天猫超市
+      </view>
+      <view class='grid-main'>
+        <span class='select'>
+          <icon type="success" color="red" size='20'></icon>
+        </span>
+        <view class='order-des'>
+          <image class='img' src='//img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
+          <view class='des'>
+            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
+            <view class='bottom'>
+              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
+              <view class="ui-number">
+                <a class="decrease disabled" >-</a>
+                <input type="number" class="num" />
+                <a class="increase">+</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='grid-main'>
+        <span class='select'>
+          <icon type="success" color="red" size='20'></icon>
+        </span>
+        <view class='order-des'>
+          <image class='img' src='//img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
+          <view class='des'>
+            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
+            <view class='bottom'>
+              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
+              <view class="ui-number">
+                <a class="decrease disabled" >-</a>
+                <input type="number" class="num" max='100' value='1' />
+                <a class="increase">+</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='float-box'>
+      <!-- <view class='edit'>
+        <view class='all-select'>
+          <span class='select'>
+            <icon type="success" color="red" size='20'></icon> 
+          </span>
+          全选
+        </view>
+        <view class='btn-box'>
+          <view class='btn red'>删除</view>
+          <view class='btn yellow'>移入收藏夹</view>
+        </view>
+      </view> -->
+      <view class='settlement'>
+        <view class='all-select'>
+          <span class='select'>
+            <icon type="success" color="red" size='20'></icon> 
+          </span>
+          全选
+        </view>
+        <view class='js-box'>
+          <view class='total-num'>合计：<span class="ui-price-icon">￥</span><text>5000</text></view>
+          <view class='btn'>结算(<text>28</text>)</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

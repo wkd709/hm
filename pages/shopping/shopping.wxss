@@ -1,0 +1,218 @@
+.container {
+  padding-top: 20rpx;
+}
+.default-shopping {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
+
+}
+.default-shopping image {
+  width: 300rpx;
+  height: 300rpx;
+}
+.default-shopping p {
+  color: #999;
+  line-height: 120rpx;
+  font-size: 36rpx;
+}
+.default-shopping button {
+  color: #ff5553;
+  border: 1px solid #ff5553;
+  border-radius: 50rpx;
+  height: 80rpx;
+  line-height: 78rpx;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}
+.order-list {
+  background: #fff;
+  padding: 10rpx;
+  overflow: hidden;
+  width: 92%;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.order-list .total-shop {
+  font-size: 28rpx;
+  line-height: 56rpx;
+}
+.order-list .total-shop .iconfont {
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}
+.order-list .grid-main {
+  height: 160rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.order-list .grid-main .order-des {
+  height: 100%;
+  overflow: hidden;
+  margin-left: 20rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.order-list .grid-main .order-des .des {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10rpx;
+}
+.order-list .grid-main .order-des .bottom {
+  display: flex;
+  justify-content: space-between;
+  height: 50rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.order-list .grid-main .order-des .bottom .price {
+  font-size: 28rpx;
+  color: #ff8000;
+  height: 100%;
+  line-height: 50rpx;
+}
+.order-des .ui-number {
+  display: flex;
+  justify-content: center;
+  height: 45rpx;
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 8rpx;
+}
+.order-des .bottom .ui-number input {
+  width: 70rpx;
+  height: 45rpx;
+  line-height: 40rpx;
+  min-height: 45rpx;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+}
+.decrease,.increase {
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 20rpx;
+  color: #999;
+}
+.order-list .grid-main .order-des .des .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-line-clamp: 2;
+  -ms-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -ms-flex-orient: vertical;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+.order-list .grid-main .order-des .img{
+  width: 120rpx;
+  height: 120rpx;
+}
+span.select{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: inline-block;
+}
+.shopping .top {
+  padding: 10rpx 0;
+}
+.shopping .top .total {
+  float: left;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.shopping .change {
+  text-align: right;
+  font-size: 30rpx;
+  color: #999;
+}
+.shopping .change span {
+  display: inline-block;
+  padding: 0 20rpx;
+  padding-bottom: 15rpx;
+}
+.float-box {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  padding: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 0 10px #ddd;
+}
+.float-box .edit {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.float-box .all-select {
+  font-size: 28rpx;
+  vertical-align: middle;
+  color: #999;
+}
+.float-box .all-select span {
+  vertical-align: middle;
+}
+.float-box .btn-box {
+  padding-right: 20rpx;
+}
+.float-box .btn {
+  padding: 0 20rpx;
+  border: 1px solid #ddd;
+  float: right;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  line-height: 50rpx;
+  margin: 0 15rpx;
+}
+.float-box .btn.yellow {
+  color: #ff8000;
+  border-color: #ff8000;
+}
+.float-box .btn.red {
+  color: #ff5553;
+  border-color: #ff5553;
+}
+
+.float-box .settlement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.float-box .settlement .js-box {
+  padding-right: 20rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.float-box .settlement .js-box .total-num {
+  font-size: 28rpx;
+}
+.float-box .settlement .js-box .total-num text,
+.float-box .settlement .js-box .ui-price-icon{
+  color: #ff8000;
+}
+
+.float-box .settlement .js-box .btn {
+  background: #ff5553;
+  color: #fff;
+  border: none;
+  line-height: 60rpx;
+  margin-left: 20rpx;
+}

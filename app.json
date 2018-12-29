@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/shopping/shopping",
     "pages/index/index",
     "pages/logs/logs",
     "pages/sort/sort",
-    "pages/shopping/shopping",
     "pages/user/user"
   ],
   "window":{

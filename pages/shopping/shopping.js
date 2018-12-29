@@ -2,7 +2,7 @@
 const app = getApp();
 
 Page({
-    data: {
-    }
-
+  data: {
+    shopping:'1'
+  }
 });
