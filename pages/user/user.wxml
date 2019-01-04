@@ -1,3 +1,6 @@
 <view class="container">
-  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+  <view class='login' wx:if='{{!isUserInfo}}'>
+    <p class='p-txt'>登录成功后才能进行订单操作</p>
+    <button class='login-btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">立即登录</button>
+  </view>
 </view>

@@ -35,6 +35,24 @@ function showModal(title, content) {
 }
 
 /**
+ * function 获取setting状态
+ * 参数:
+ **/
+
+function getSetting() {
+  return new Promise((resolve, reject) => {
+    wx.getSetting({
+      success(res) {
+        resolve(res);
+      },
+      fail(err) {
+        reject(err);
+      }
+    });
+  })
+}
+
+/**
  * function 提示
  * 参数: title 标题 / status true/false/'loading' 状态
  **/
@@ -46,8 +64,44 @@ function showToast(title,status) {
   });
 }
 
+/**
+ * function 缓存
+ * 参数: key 字段名 / value 值
+ **/
+function setStorage(key, value) {
+  wx.setStorage({
+    key: key,
+    data: value
+  })
+  return new Promise((resolve, reject) => {
+
+  })
+}
+
+/**
+ * function 获取
+ * 参数: key 字段名
+ **/
+function getStorage(key) {
+  return new Promise((resolve, reject) => {
+    wx.getStorage({
+      key: key,
+      success(res) {
+        resolve(res.data);
+      },
+      fail(err) {
+        reject(err);
+      }
+    })
+  })
+}
+
+
 module.exports = {
   formatTime: formatTime,
   showModal: showModal,
   showToast: showToast,
+  setStorage: setStorage,
+  getStorage: getStorage,
+  getSetting: getSetting,
 }

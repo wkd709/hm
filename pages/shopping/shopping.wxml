@@ -7,7 +7,7 @@
   <view class='shopping' wx:if='{{shopping}}'>
     <view class='top'>
       <view class='total'>共31件宝贝</view>
-      <view class='change'><span>管理</span></view>
+      <view class='change' bindtap="isEditTap"><span>管理</span></view>
     </view>
     <view class='order-list'>
       <view class='total-shop'>
@@ -98,7 +98,7 @@
       </view>
     </view>
     <view class='float-box'>
-      <!-- <view class='edit'>
+      <view class='edit' wx:if='{{isEdit}}'>
         <view class='all-select'>
           <span class='select'>
             <icon type="success" color="red" size='20'></icon> 
@@ -109,8 +109,8 @@
           <view class='btn red'>删除</view>
           <view class='btn yellow'>移入收藏夹</view>
         </view>
-      </view> -->
-      <view class='settlement'>
+      </view>
+      <view class='settlement' wx:if='{{!isEdit}}'>
         <view class='all-select'>
           <span class='select'>
             <icon type="success" color="red" size='20'></icon> 

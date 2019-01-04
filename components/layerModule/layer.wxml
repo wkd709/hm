@@ -1,0 +1,11 @@
+<!--component/layerModule/layer.wxml-->
+<view class='layer-box'>
+  <view class='container'>
+    <view class='title'>{{obj.title}}</view>
+    <view class='content'>{{obj.content}}</view>
+    <view class='btn-box'>
+      <view class='btn cancel' bindtap="cancel">取消</view>
+      <view class='btn yes' bindtap="yes">确定</view>
+    </view>
+  </view>
+</view>

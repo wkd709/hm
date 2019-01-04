@@ -24,6 +24,10 @@ Page({
     current: 0,//分类Index
     qqmapsdk: '',//地图
     mapInfo: {},//地理位置
+
+    // layer组件
+    layerObj: {},
+    isLayer: false,
   },
   onPullDownRefresh:function() {//监听下拉事件
     // wx.stopPullDownRefresh();//停止当前页面下拉刷新
@@ -37,14 +41,43 @@ Page({
         var data = JSON.stringify(res.authSetting);
         if (data != '{}') {// !== "{}" 代表不是第一次进入
           if (!res.authSetting['scope.userLocation']) {//未授权获取地址
-            util
-              .showModal('请求授权当前位置','需要获取您的地理位置，请确认授权')
-              .then(res=> {
-                self.setting();
-              })
-              .catch((err) => {
-                util.showToast('授权失败', false);
-              });
+            // var obj = {
+            //   title: '请求授权当前位置',
+            //   content: '需要获取您的地理位置，请确认授权'
+            // }
+            // self.setData({ 'layerObj': obj, isLayer: true});
+            wx.showModal({
+              title: '请求授权当前位置',
+              content: '需要获取您的地理位置，请确认授权',
+              success(res) {
+                console.log(res, 1);
+                if (res.confirm) {
+                  self.setting();
+                } else if (res.cancel) {
+                  util.showToast('授权失败', false);
+                }
+              }
+            })
+            // util
+            //   .showModal('请求授权当前位置','需要获取您的地理位置，请确认授权')
+            //   .then(res=> {
+            //     wx.openSetting({
+            //       success(res) {
+            //         console.log(res, 1);
+            //         if (res.authSetting['scope.userLocation']) {//授权获取地址成功
+            //           self.getArea();
+            //         } else {
+            //           util.showToast('授权失败', false);
+            //         }
+            //       },
+            //       fail(err) {
+            //         util.showToast('授权失败', false);
+            //       }
+            //     })
+            //   })
+            //   .catch((err) => {
+            //     util.showToast('授权失败', false);
+            //   });
           } else {
             self.getArea();
           }
@@ -61,6 +94,17 @@ Page({
       key: config.txMapKey
     });
     this.setData({qqmapsdk: qqmapsdk});
+  },
+  //组件事件 
+  onEvent: function (e) {
+    console.log(e.detail);
+    if (e.detail.btnType) {//确定
+      // 设置权限
+      this.setting();
+    } else {//取消
+      this.setData({ isLayer: false });
+      
+    }
   },
   map(latitude, longitude) {
     var self = this;
@@ -96,32 +140,54 @@ Page({
     });
   },
   getArea() {//获取当前位置
-   var self = this;
+    var self = this;
+    //获取地址
     wx.getLocation({
       type: 'gcj02',
       altitude: true,
       success(res) {
+        console.log(res, 2);
         const latitude = res.latitude;
         const longitude = res.longitude;
         const speed = res.speed;
         const accuracy = res.accuracy;
-        self.map(latitude,longitude);
+        self.map(latitude, longitude);
       },
       fail(err) {
+        console.log(err, 3);
       }
     })
   },
   setting() {//设置授权
     var self = this;
+    this.setData({ isLayer: false });
     wx.openSetting({
       success(res) {
+        console.log(res,1);
         if (res.authSetting['scope.userLocation']) {//授权获取地址成功
-          self.getArea();
+          wx.getSetting({
+            success(res) {
+              if (res.authSetting['scope.userLocation']) {//授权获取地址成功
+                self.getArea();
+              } else {
+                util.showToast('授权失败', false);
+              }
+            },
+            fail(err) {
+              console.log(err);
+              util.showToast('授权失败', false);
+            }
+          });
+        } else {
+          util.showToast('授权失败', false);
         }
+      },
+      fail(err) {
+        util.showToast('授权失败', false);
       }
     })
   },
   intervalChange(e) {//滑动分类
-    this.setData({ current: e.detail.current, })
+    this.setData({ current: e.detail.current })
   },
 });
