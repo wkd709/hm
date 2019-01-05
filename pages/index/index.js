@@ -46,18 +46,7 @@ Page({
             //   content: '需要获取您的地理位置，请确认授权'
             // }
             // self.setData({ 'layerObj': obj, isLayer: true});
-            wx.showModal({
-              title: '请求授权当前位置',
-              content: '需要获取您的地理位置，请确认授权',
-              success(res) {
-                console.log(res, 1);
-                if (res.confirm) {
-                  self.setting();
-                } else if (res.cancel) {
-                  util.showToast('授权失败', false);
-                }
-              }
-            })
+
             // util
             //   .showModal('请求授权当前位置','需要获取您的地理位置，请确认授权')
             //   .then(res=> {
@@ -78,6 +67,20 @@ Page({
             //   .catch((err) => {
             //     util.showToast('授权失败', false);
             //   });
+
+
+            wx.showModal({
+              title: '请求授权当前位置',
+              content: '需要获取您的地理位置，请确认授权',
+              success(res) {
+                console.log(res, 1);
+                if (res.confirm) {
+                  self.setting();
+                } else if (res.cancel) {
+                  util.showToast('授权失败', false);
+                }
+              }
+            })
           } else {
             self.getArea();
           }
@@ -86,7 +89,6 @@ Page({
         }
       }
     })
-
     this.getData();
 
     //初始化地图
@@ -167,6 +169,7 @@ Page({
         if (res.authSetting['scope.userLocation']) {//授权获取地址成功
           wx.getSetting({
             success(res) {
+              console.log(res,33);
               if (res.authSetting['scope.userLocation']) {//授权获取地址成功
                 self.getArea();
               } else {

@@ -5,18 +5,39 @@ const app = getApp();
 
 Page({
   data: {
-    isUserInfo: false,
-    userInfo: {},
+    isLoading: true,//是否加载中
+    userInfo: '',
   },
   onLoad: function() {
     var self = this;
-    util.getStorage('userInfo')
-      .then(res => {
-        self.setData({ 'isUserInfo': true, 'userInfo': res });
-      })
-      .catch((err) => {
-        self.setData({ 'isUserInfo': false });
-      });;
+    if (this.data.isLoading) {
+      wx.showLoading({
+        title: '加载中',
+      });
+      // 获取是否已登录过
+      util.getStorage('userInfo')
+        .then(res => {
+          setTimeout(()=>{
+            wx.hideLoading();
+            console.log(res);
+            self.setData({
+              'isLoading': false,
+              'userInfo': res
+            });
+          },1000)
+        })
+        .catch((err) => {
+          setTimeout(() => {
+            wx.hideLoading();
+            self.setData({
+              'isLoading': false,
+              'userInfo': ''
+            });
+          }, 1000)
+        });
+    } else {
+      wx.hideLoading();
+    }
   },
   getUserInfo() {
     var self = this;

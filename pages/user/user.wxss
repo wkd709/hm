@@ -21,3 +21,140 @@
   text-align: center;
   border-radius: 20rpx;
 }
+.n-container .headtab .content {
+  background: #fd5552;
+  height: 200rpx;
+  display: flex;
+}
+.n-container .headtab .content .item-w {
+  flex: 1;
+}
+.headtab {
+  background: #fff;
+}
+.headtab .item-w.mt {
+  margin-top: 30rpx;
+}
+.headtab .item-w .img {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100rpx;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.headtab .item-w image {
+  height: 100rpx;
+  width: 100rpx;
+}
+.headtab .item-w {
+  text-align: center;
+  color: #fff;
+}
+.headtab .item-w .title {
+  font-size: 28rpx;
+}
+.headtab .item-w .price {
+  color: #ffec27;
+  font-size: 28rpx;
+  margin: 8rpx 0;
+}
+.headtab .item-w .name {
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+.headtab .item-w .p {
+  font-size: 28rpx;
+}
+.headtab>image{
+  width: 100%;
+  height: 40rpx;
+}
+.headtab .item-w .btn {
+  font-size: 28rpx;
+  border: 1px solid #fff;
+  padding: 0 10rpx;
+  line-height: 40rpx;
+  width: 80rpx;
+  margin: 0 auto;
+  border-radius: 20rpx;
+}
+.n-wrap {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.n-wrap .item {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+}
+.n-wrap .item icon {
+  font-size: 50rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
+.n-wrap .item text {
+  vertical-align: middle;
+}
+.n-wrap .item navigator {
+  float: right;
+  color: #999;
+}
+.n-wrap .item navigator icon {
+  font-size: 32rpx;
+}
+.order-all {
+  display: flex;
+  border-top: 1px solid #ddd;
+  width: 100%;
+}
+.order-all .order-item {
+  flex: 1;
+  text-align: center;
+  padding: 15rpx 0;
+}
+.order-all .order-item icon {
+  font-size: 60rpx;
+  color: #a8a8a8;
+}
+.order-all .order-item text {
+  display: block;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.order-all .order-item span {
+  height: 80rpx;
+  width: 2rpx;
+  display: block;
+  float: left;
+  background: #dadada;
+  margin-top: 20rpx;
+}
+.menu.n-wrap {
+  padding: 0 20rpx;
+}
+.menu.n-wrap .item {
+  padding: 0;
+  position: relative;
+}
+.menu.n-wrap .item navigator{
+ min-width: 100rpx;
+ text-align: center;
+ height: 100%;
+ position: absolute;
+ right: -20rpx;
+ top: 0;
+}
+.menu.n-wrap .item navigator text {
+  border-radius: 20rpx;
+  background: #ff5553;
+  padding: 0 15rpx;
+  color: #fff;
+  margin-right: 10rpx;
+}
+.bd {
+ border-bottom: 1px solid #eee;
+}
