@@ -94,6 +94,7 @@
   font-size: 50rpx;
   vertical-align: middle;
   margin-right: 15rpx;
+  color: #6c6c6c;
 }
 .n-wrap .item text {
   vertical-align: middle;
@@ -114,6 +115,20 @@
   flex: 1;
   text-align: center;
   padding: 15rpx 0;
+  position: relative;
+}
+.order-all .order-item span.sz {
+  position: absolute;
+  top: -8rpx;
+  left: 90rpx;
+  width: auto;
+  height: 30rpx;
+  line-height: 30rpx;
+  border-radius: 20rpx;
+  background: #ff5553;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #fff;
 }
 .order-all .order-item icon {
   font-size: 60rpx;
@@ -142,7 +157,9 @@
 }
 .menu.n-wrap .item navigator{
  min-width: 100rpx;
- text-align: center;
+ box-sizing: border-box;
+ padding-right: 20rpx;
+ text-align: right;
  height: 100%;
  position: absolute;
  right: -20rpx;
@@ -151,7 +168,8 @@
 .menu.n-wrap .item navigator text {
   border-radius: 20rpx;
   background: #ff5553;
-  padding: 0 15rpx;
+  padding: 0 12rpx;
+  font-size: 26rpx;
   color: #fff;
   margin-right: 10rpx;
 }

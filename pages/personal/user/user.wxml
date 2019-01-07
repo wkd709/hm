@@ -29,38 +29,47 @@
     <view class='item'>
       <icon class='iconfont icon-dingdan'></icon>
       <text>我的订单</text>
-      <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
+      <navigator url="/pages/personal/order/order?type=1" open-type='navigate' hover-class="none">
         查看全部订单 
         <icon class='iconfont icon-xiangyou'></icon>
       </navigator>
     </view>
     <view class='order-all'>
-      <view class='order-item'>
+      <view class='order-item' data-type='2' bindtap='toOrderPage'>
         <icon class='iconfont icon-fukuan'></icon>
         <text>待付款</text>
+        <span class='sz'>1</span>
       </view>
-      <view class='order-item'>
+      <view class='order-item' data-type='3' bindtap='toOrderPage'>
         <icon class='iconfont icon-daifahuo'></icon>
         <text>待发货</text>
+        <span class='sz'>1</span>
       </view>
-      <view class='order-item'>
+      <view class='order-item' data-type='4' bindtap='toOrderPage'>
         <icon class='iconfont icon-daishouhuo'></icon>
         <text>待收货</text>
+        <span class='sz'>1</span>
       </view>
-      <view class='order-item'>
+      <view class='order-item' data-type='5' bindtap='toOrderPage'>
+        <icon class='iconfont icon-yiwanchengdingdan'></icon>
+        <text>已完成</text>
+        <span class='sz'>1</span>
+      </view>
+      <view class='order-item' data-type='6' bindtap='toOrderPage'>
         <icon class='iconfont icon-icon5'></icon>
         <text>退换货</text>
+        <span class='sz'>1</span>
       </view>
-      <view class='order-item'>
+      <!-- <view class='order-item' data-type='1' bindtap='toOrderPage'>
         <span></span>
         <icon class='iconfont icon-shijian'></icon>
         <text>周期购</text>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class='n-wrap menu'>
     <view class='item'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-kanjia'></icon>
       <text>砍价首页</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
@@ -69,7 +78,7 @@
   </view>
   <view class='n-wrap menu'>
     <view class='item'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-fenhongjilu'></icon>
       <text>分红中心</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
@@ -78,14 +87,14 @@
   </view>
   <view class='n-wrap menu'>
     <view class='item bd'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-youhuiquan'></icon>
       <text>领取优惠券</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
       </navigator>
     </view>
     <view class='item'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-wodeyouhuiquan'></icon>
       <text>我的优惠券</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
@@ -94,28 +103,28 @@
   </view>
   <view class='n-wrap menu'>
     <view class='item bd'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-gouwucheman'></icon>
       <text>我的购物车</text>
-      <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
-      <text>11111</text><icon class='iconfont icon-xiangyou'></icon>
+      <navigator url="/pages/shopping/shopping" open-type='switchTab' hover-class="none">
+      <text>1</text><icon class='iconfont icon-xiangyou'></icon>
       </navigator>
     </view>
     <view class='item bd'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-31guanzhu1xuanzhong'></icon>
       <text>我的关注</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
       </navigator>
     </view>
     <view class='item bd'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-zuji'></icon>
       <text>我的足迹</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>
       </navigator>
     </view>
     <view class='item'>
-      <icon class='iconfont icon-dingdan'></icon>
+      <icon class='iconfont icon-fanlibaojia'></icon>
       <text>我的全返</text>
       <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
         <icon class='iconfont icon-xiangyou'></icon>

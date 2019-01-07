@@ -1,4 +1,4 @@
-const util = require('../../utils/util.js');
+const util = require('../../../utils/util.js');
 
 //获取应用实例
 const app = getApp();
@@ -39,8 +39,14 @@ Page({
       wx.hideLoading();
     }
   },
+  toOrderPage(event) {//跳转订单页
+    const data = event.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/personal/order/order?type=' + data.type
+    });
+  },
   getUserInfo() {
-    var self = this;
+    const self = this;
     wx.getUserInfo({
       success: function (res) {
         console.log(res.userInfo);

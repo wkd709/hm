@@ -1,0 +1,18 @@
+<!--pages/personal/order/order.wxml-->
+
+<view class='container'>
+  <view class='order-box'>
+    <view class='order-sort-wrap'>
+      <view class='order-sort'>
+        <view class='order-sort-item {{pageType == item.type ? "active" : ""}}' wx:for='{{orderSort}}' wx:key='{{index}}'>{{item.name}}</view>
+      </view>
+    </view>
+    <view class='order'>
+      <view class='defalut-order'>
+        <image src='/assets/images/e-order.png'></image>
+        <view class='p'>您暂时没有任何订单哦！</view>
+        <view class='btn'>去首页逛逛吧</view>
+      </view>
+    </view>
+  </view>
+</view>

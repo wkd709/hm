@@ -1,0 +1,47 @@
+/* pages/personal/order/order.wxss */
+
+.order-box .order-sort-wrap {
+  overflow-x: auto;
+}
+.order-box .order-sort-wrap .order-sort {
+  width: 910rpx;
+  height: 80rpx;
+  background: #fff;
+  border-bottom: 4rpx solid #eee;
+}
+.order-box .order-sort-wrap .order-sort-item {
+  width: 130rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  float: left;
+  font-size: 32rpx;
+  color: #666;
+}
+.order-box .order-sort-wrap .order-sort-item.active {
+  border-bottom: 4rpx solid #fe5455;
+  color: #fe5455;
+}
+.defalut-order .p {
+  line-height: 140rpx;
+  text-align: center;
+  color: #999;
+}
+.defalut-order image{
+  width: 300rpx;
+  height: 300rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 160rpx;
+}
+.defalut-order .btn {
+  border: 2rpx solid #ff5555;
+  width: 50%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #ff5555;
+  text-align: center;
+  border-radius: 40rpx;
+  margin: 0 auto;
+}
