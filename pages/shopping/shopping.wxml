@@ -100,7 +100,7 @@
     <view class='float-box'>
       <view class='edit' wx:if='{{isEdit}}'>
         <view class='all-select'>
-          <span class='select'>
+          <span class='select' bindtap='changeAll'>
             <icon type="success" color="red" size='20'></icon> 
           </span>
           全选

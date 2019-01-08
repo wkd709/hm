@@ -8,5 +8,8 @@ Page({
   },
   isEditTap(event) {
     this.setData({"isEdit": !this.data.isEdit});
-  }
+  },
+  changeAll() {//全选
+    
+  },
 });

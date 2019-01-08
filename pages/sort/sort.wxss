@@ -1,0 +1,77 @@
+.sort-box,.tab-content {
+  background: #fff;
+  height: 100%;
+}
+.tab-nav {
+  width: 23%;
+  float: left;
+  height: 100%;
+  background: #EEE;
+  color: #9B9B9B;
+  font-size: 28rpx;
+  text-align: center;
+}
+.tab-nav ul {
+  width: 100%;
+}
+.tab-nav ul li {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  line-height: 120rpx;
+  border-bottom: 2rpx solid #E1E1E1;
+}
+.tab-nav ul li.active {
+  color: #333;
+  background: #fff;
+  border-right: 0rpx;
+}
+.tab-nav ul li:last-child {
+  border: none;
+}
+.tab-menu {
+  width: 77%;
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+  padding: 20rpx;
+}
+.tab-menu .tab-list {
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.tab-menu .tab-list .h2 {
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #9B9B9B;
+  padding: 30rpx 0;
+}
+.tab-menu .tab-list ul {
+  width: 100%;
+}
+.tab-menu .tab-list li {
+  float: left;
+  width: 33.33333%;
+  margin: 10rpx 0;
+}
+.tab-menu .tab-list li .tab-img {
+  width: 70%;
+  height: 90rpx;
+  margin: 0 auto;
+}
+.tab-menu .tab-list li .tab-img image {
+  width: 100%;
+}
+.tab-menu .tab-list li text {
+  display: block;
+  line-height: 26rpx;
+  height: 26rpx;
+  padding: 8rpx 0;
+  font-size: 28rpx;
+  color: #5D5D5D;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

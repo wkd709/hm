@@ -1,0 +1,21 @@
+<view class='container sort-box'>
+  <view class='tab-content'>
+    <scroll-view scroll-y class='tab-nav'>
+      <ul>
+        <li wx:for="{{tabNav.list}}" wx:key='{{index}}' data-index='{{index}}' data-id='{{item.id}}'
+        class='{{tabNavIndex == index ? "active" : ""}}' bindtap='changeNav'>{{item.name}}</li>
+      </ul>
+    </scroll-view>
+    <scroll-view scroll-y class='tab-menu' scroll-top="{{scrollTop}}">
+      <view class='tab-list' wx:for='{{tabMenu}}' wx:key='{{index}}'>
+        <view class='h2'>{{item.name}}</view>
+        <ul>
+          <li wx:for='{{item.list}}' wx:for-item="key" wx:for-index="idx" wx:key='{{idx}}'>
+            <view class="tab-img"><image src="{{key.pic}}" mode='aspectFit' lazy-load='true'></image></view>
+            <text>{{key.name}}</text>
+          </li>
+        </ul>
+      </view>
+    </scroll-view>
+  </view>
+</view>
