@@ -7,14 +7,17 @@
       </ul>
     </scroll-view>
     <scroll-view scroll-y class='tab-menu' scroll-top="{{scrollTop}}">
-      <view class='tab-list' wx:for='{{tabMenu}}' wx:key='{{index}}'>
-        <view class='h2'>{{item.name}}</view>
-        <ul>
-          <li wx:for='{{item.list}}' wx:for-item="key" wx:for-index="idx" wx:key='{{idx}}'>
-            <view class="tab-img"><image src="{{key.pic}}" mode='aspectFit' lazy-load='true'></image></view>
-            <text>{{key.name}}</text>
-          </li>
-        </ul>
+      <top-loading wx:if='{{isLoading}}'></top-loading>
+      <view class='list {{tabNavIndex == index&&!isLoading ? "active" : ""}}' wx:for='{{tabMenu}}' wx:key='{{index}}' wx:for-item="element">
+        <view class='tab-list' wx:for='{{element}}' wx:key='{{i}}' wx:if='{{element}}'>
+          <view class='h2'>{{item.name}}</view>
+          <ul>
+            <li wx:for='{{item.list}}' wx:for-item="key" wx:for-index="idx" wx:key='{{idx}}'>
+              <view class="tab-img"><image src="{{'https:'+key.pic}}" aria-label='{{key.name}}' mode='aspectFit' lazy-load='true'></image></view>
+              <text>{{key.name}}</text>
+            </li>
+          </ul>
+        </view>
       </view>
     </scroll-view>
   </view>

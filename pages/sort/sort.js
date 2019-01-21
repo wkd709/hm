@@ -5,8 +5,9 @@ Page({
   data: {
     tabNav: [],//左边栏
     tabNavIndex: 0,
-    tabMenu: [],//右边栏
+    tabMenu: new Array(16),//右边栏
     scrollTop: 0,
+    isLoading: true,
   },
   onLoad: function () {
     this.getData();
@@ -19,29 +20,25 @@ Page({
       url: getUrl,
       method: 'post',
       success: (res) => {
-        
         const data = res.data.data;
         if (data) {
-          if (obj) {
-            self.setData({
-              'tabMenu': data.mainBlock.models,
-              tabNavIndex: obj.index,
-              scrollTop: 0
-            });
-          } else {
-            self.setData({ 
-              'tabNav': data.sideBlock,
-              'tabMenu': data.mainBlock.models,
-              tabNavIndex: 0,
-              scrollTop: 0
-            });
+          const index = obj&&obj.index ? obj.index : 0;
+          var dataObj = {
+            'tabMenu': self.data.tabMenu,
+            tabNavIndex: index,
+            scrollTop: 0
           }
+          if (!obj) dataObj.tabNav = data.sideBlock; dataObj.tabMenu = self.data.tabMenu;
+          if (!self.data.tabMenu[index]) dataObj.isLoading = false; dataObj.tabMenu[index] = data.mainBlock.models; 
+          self.setData(dataObj);
         }
       }
     });
+    
   },
   changeNav(event) {//选择分类
     const data = event.currentTarget.dataset;
+    !this.data.tabMenu[data.index] ? this.setData({isLoading: true}) : '';
     this.getData(data);
   },
 });

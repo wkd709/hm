@@ -36,6 +36,12 @@
   float: left;
   padding: 20rpx;
 }
+.tab-menu .list {
+  display: none;
+}
+.tab-menu .list.active {
+  display: block;
+}
 .tab-menu .tab-list {
   overflow: hidden;
   margin-bottom: 15rpx;
