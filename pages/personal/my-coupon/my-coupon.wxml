@@ -1,2 +1,38 @@
 <!--pages/personal/my-coupon/my-coupon.wxml-->
-<text>pages/personal/my-coupon/my-coupon.wxml</text>
+<view class="container">
+  <view id='m-mine'>
+    <view class='list'>
+      <view class="item coupon-instructions">可使用券 
+        <a >优惠券使用说明</a>
+      </view>
+      <view class="item type-coupon" data-region="华北,东北,华东,华南,西南/西北,华中" data-time="2018/12/28~2019/01/28">
+        <view class="coupon-base-small ">
+          <view class="coupon-wrap-base">
+            <view class="coupon-base">
+              <view class="coupon-amount">¥50</view>
+              <view class="coupon-site">满99元使用</view>
+            </view>
+          </view>
+        </view>
+        <p class="title">天猫超市-商品券</p>
+        <view class="special-goods">限定商品可以使用</view>
+        <view class="validity"><view>2018/12/28~2019/01/28</view></view>
+        <a class="action couponGood" target="_blank">去使用</a>
+      </view>
+      <view class="item type-coupon" data-region="华北,东北,华东,华南,西南/西北,华中" data-time="2018/12/28~2019/01/28">
+        <view class="coupon-base-small ">
+          <view class="coupon-wrap-base">
+            <view class="coupon-base">
+              <view class="coupon-amount">¥50</view>
+              <view class="coupon-site">满99元使用</view>
+            </view>
+          </view>
+        </view>
+        <p class="title">天猫超市-商品券</p>
+        <view class="special-goods">限定商品可以使用</view>
+        <view class="validity"><view>2018/12/28~2019/01/28</view></view>
+        <a class="action couponGood" target="_blank">去使用</a>
+      </view>
+    </view>
+  </view>
+</view>

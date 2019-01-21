@@ -1,1 +1,108 @@
 /* pages/personal/my-coupon/my-coupon.wxss */
+#m-mine .list {
+  width: 100%;
+  min-height: 680rpx;
+  background-color: #f2f2f2;
+}
+#m-mine .list .item {
+  position: relative;
+  width: 100%;
+  height: 156rpx;
+  -webkit-background-size: 600rpx 600rpx;
+  background-size: 600rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #eee;
+  padding: 20rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#m-mine .list .coupon-instructions{
+  height: 72rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 0;
+}
+#m-mine .list .item .coupon-base-small {
+  width: 172rpx;
+  height: 108rpx;
+  padding: 16rpx 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #ff7675;
+  color: #fff;
+  border-radius: 12rpx;
+  position: relative;
+}
+#m-mine .list .item .coupon-base-small::after {
+  content: '';
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  border-radius: 20rpx;
+  top: 40rpx;
+  background: #fff;
+  right: -10rpx;
+}
+#m-mine .list .coupon-instructions a {
+  float: right;
+  display: block;
+  color: #999;
+  font-size: 24rpx;
+}
+#m-mine .list .item .coupon-base-small .coupon-amount {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 700;
+  line-height: 40rpx;
+}
+#m-mine .list .item .coupon-base-small .coupon-site {
+  margin-top: 4rpx;
+  font-size: 24rpx;
+}
+#m-mine .list .item .title {
+  font-size: 32rpx;
+  position: absolute;
+  left: 216rpx;
+  top: 24rpx;
+}
+#m-mine .list .item .special-goods {
+  position: absolute;
+  left: 200rpx;
+  top: 60rpx;
+  background-color: #DD2727;
+  color: #fff;
+  border-radius: 4rpx;
+  padding: 2rpx 4rpx;
+  font-size: 24rpx;
+  -webkit-transform: scale(.8);
+  transform: scale(.8);
+  border: 0;
+  outline: 0;
+}
+#m-mine .list .item .validity {
+  position: absolute;
+  left: 216rpx;
+  top: 96rpx;
+  font-size: 25rpx;
+  line-height: 32rpx;
+  color: #999;
+  text-align: center;
+}
+#m-mine .list .item .action {
+  position: absolute;
+  padding: 10rpx 0;
+  right: 40rpx;
+  top: 72rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #e12a46;
+  border: 2rpx solid #e12a46;
+  border-radius: 6rpx;
+  display: block;
+  width: 18%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+}

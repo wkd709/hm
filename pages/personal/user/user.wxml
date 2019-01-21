@@ -94,7 +94,7 @@
       <view class='item'>
         <icon class='iconfont icon-wodeyouhuiquan'></icon>
         <text>我的优惠券</text>
-        <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
+        <navigator url="/pages/personal/my-coupon/my-coupon" open-type='navigate' hover-class="none">
           <icon class='iconfont icon-xiangyou'></icon>
         </navigator>
       </view>

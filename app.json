@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/sort/sort",
     "pages/personal/user/user",
+    "pages/sort/sort",
+    "pages/personal/my-coupon/my-coupon",
     "pages/personal/order/order",
     "pages/index/index",
     "pages/shopping/shopping",
     "pages/logs/logs",
-    "pages/personal/my-coupon/my-coupon",
     "pages/personal/collect-coupons/collect-coupons"
   ],
   "permission": {
