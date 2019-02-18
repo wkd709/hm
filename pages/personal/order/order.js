@@ -74,8 +74,6 @@ Page({
           "dateList": Object.assign(getData),
           "isLoading": false
         });
-
-        console.log(this.data.dateList, this.data);
       },
       fail: (err) => {
         wx.hideLoading();

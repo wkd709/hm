@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/personal/order/order",
     "pages/personal/user/user",
+    "pages/personal/order/order",
     "pages/index/index",
     "pages/personal/collect-coupons/collect-coupons",
     "pages/sort/sort",
@@ -17,7 +17,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "盒马鲜生平台",
+    "navigationBarTitleText": "仿天猫平台",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

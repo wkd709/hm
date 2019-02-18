@@ -1,7 +1,7 @@
 {
   "backgroundTextStyle": "dark",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "盒马鲜生平台",
+  "navigationBarTitleText": "仿天猫平台",
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": true,
   "usingComponents": {
