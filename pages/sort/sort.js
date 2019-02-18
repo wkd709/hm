@@ -15,7 +15,7 @@ Page({
   getData(obj) {//获取接口数据
     const self =  this;
     //分类
-    const getUrl = 'https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/mallnav' + (obj ? "/" + obj.id : '');
+    const getUrl = 'https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/mallnav' + (obj ? "/" + obj.id : '');
     wx.request({
       url: getUrl,
       method: 'post',

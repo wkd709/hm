@@ -54,7 +54,7 @@ Page({
         postUrl = '/Returns'; break;//退换货
     }
     wx.request({
-      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/order" + postUrl,
+      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/order" + postUrl,
       method: 'post',
       success: (res) => {
         wx.hideLoading();
@@ -66,8 +66,7 @@ Page({
             item.orderStatusName = util.tradingStatus(item.tradingStatus);
 
             //退换 时间换算 是否超过退换货的期限
-            item.isExceed = util.limitedTime(item.date);
-            console.log(item);
+            item.isExceed = util.limitedTime(item.date, item.returnTime);
           });
         }
 
@@ -75,6 +74,8 @@ Page({
           "dateList": Object.assign(getData),
           "isLoading": false
         });
+
+        console.log(this.data.dateList, this.data);
       },
       fail: (err) => {
         wx.hideLoading();

@@ -13,7 +13,7 @@ Page({
    */
   onLoad: function (options) {
     wx.request({
-      url: 'https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/collect_coupons',
+      url: 'https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/collect_coupons',
       method: 'post',
       success: (res) => {
         var data = res.data.data;

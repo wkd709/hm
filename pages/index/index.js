@@ -129,7 +129,7 @@ Page({
   getData() {//获取接口数据
     //分类
     wx.request({
-      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/all_sort",
+      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/all_sort",
       success: (res) => {
         if (res.data.success == 'true') {
           this.data.goodsSorts[0] = res.data.data.splice(0, 10);

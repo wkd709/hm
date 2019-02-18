@@ -118,7 +118,7 @@ function wxPromisify(fn) {
 
 /**
  * 订单状态
- * 交易状态： 0 等待卖家发货 、 1 付款确认中 、2 等待买家付款 、3 卖家已发货 、 4 交易成功 、5 交易关闭 、6 退款中的订单
+ * 交易状态： 0 等待卖家发货 、 1 付款确认中 、2 等待买家付款 、3 卖家已发货 、 4 交易成功 、5 交易关闭 、6 退款处理中 、 7 退款成功 、8 换货处理中 、9 换货成功
  */
 function tradingStatus (status) {
   let tradingName = '';
@@ -129,7 +129,10 @@ function tradingStatus (status) {
     case 3: tradingName = '卖家已发货'; break;
     case 4: tradingName = '交易成功'; break;
     case 5: tradingName = '交易关闭'; break;
-    case 6: tradingName = '退款中的订单'; break;
+    case 6: tradingName = '退款处理中'; break;
+    case 7: tradingName = '退款成功'; break;
+    case 8: tradingName = '换货处理中'; break;
+    case 9: tradingName = '换货成功'; break;
     default: tradingName = '';break;
   }
 

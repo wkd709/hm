@@ -1,7 +1,13 @@
 /* pages/personal/order/order.wxss */
-
+.container {
+  min-height: 100%;
+  height: auto;
+}
 .order-box .order-sort-wrap {
   overflow-x: auto;
+}
+.order-box .order {
+ overflow: hidden;
 }
 .order-box .order-sort-wrap .order-sort {
   width: 910rpx;
@@ -50,8 +56,7 @@
   width: 95%;
   background: #fff;
   border-radius: 20rpx;
-  margin: 0 auto;
-  margin-top: 20rpx;
+  margin: 20rpx auto;
   padding: 10rpx 20rpx;
   box-sizing: border-box;
 }
