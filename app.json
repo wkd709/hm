@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/personal/order/order",
     "pages/personal/user/user",
+    "pages/index/index",
+    "pages/personal/collect-coupons/collect-coupons",
     "pages/sort/sort",
     "pages/personal/my-coupon/my-coupon",
-    "pages/personal/order/order",
-    "pages/index/index",
     "pages/shopping/shopping",
-    "pages/logs/logs",
-    "pages/personal/collect-coupons/collect-coupons"
+    "pages/logs/logs"
   ],
   "permission": {
     "scope.userLocation": {
@@ -24,7 +24,7 @@
     "selectedColor": "#ff5553",
     "color": "#9f9f9f",
     "backgroundColor": "#ffff",
-    "borderStyle": "#c8c7cc",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",

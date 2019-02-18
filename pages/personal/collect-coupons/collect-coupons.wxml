@@ -1,2 +1,52 @@
 <!--pages/personal/collect-coupons/collect-coupons.wxml-->
-<text>pages/personal/collect-coupons/collect-coupons.wxml</text>
+
+<view class='container'>
+  <view class='my-total'>
+    <view class='coupons-num'>
+      我的优惠券 
+      <text>9</text>张
+      <icon class='sj-r'></icon>
+    </view>
+    <view class='coupons-num'>
+      我的购物劵
+      <text>9</text>张
+      <icon class='sj-r'></icon>
+    </view>
+  </view>
+  <view class='coupon-wrapper'>
+    <view class='coupon-item'>
+      <view class='main-tab'>
+        <view class='wrap'>
+          <image src='https://img.alicdn.com/imgextra/i4/i3/725677994/O1CN01iX7U1B28vIdvV67e1_!!725677994.jpg_400x400Q50s50.jpg_.webp'></image>
+        </view>
+        <view class="content">
+          <h3>大好大39减20</h3>
+          <view class="tips">天猫超市限定商品使用</view>
+          <view class="time">2019.01.25-2019.02.02</view>
+        </view>
+      </view>
+      <view class="sub-tab">
+        <view class="price">¥20</view>
+        <view class="threshold">满39可用</view>
+        <span class="status get-coupon">立即领取</span>
+      </view>
+    </view>
+     <view class='coupon-item'>
+      <view class='main-tab'>
+        <view class='wrap'>
+          <image src='https://img.alicdn.com/imgextra/i4/i3/725677994/O1CN01iX7U1B28vIdvV67e1_!!725677994.jpg_400x400Q50s50.jpg_.webp'></image>
+        </view>
+        <view class="content">
+          <h3>大好大39减20</h3>
+          <view class="tips">天猫超市限定商品使用</view>
+          <view class="time">2019.01.25-2019.02.02</view>
+        </view>
+      </view>
+      <view class="sub-tab">
+        <view class="price">¥20</view>
+        <view class="threshold">满39可用</view>
+        <span class="status get-coupon">立即领取</span>
+      </view>
+    </view>
+  </view>
+</view>

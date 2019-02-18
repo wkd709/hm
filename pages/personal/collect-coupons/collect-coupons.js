@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    baseCouponInfoVOList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/hm/collect_coupons',
+      method: 'post',
+      success: (res) => {
+        var data = res.data.data;
+        if (res.data) {
+          this.setData({'baseCouponInfoVOList': data.baseCouponInfoVOList});
+        }
+      }
+    });
   },
 
   /**

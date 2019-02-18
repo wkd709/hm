@@ -87,7 +87,7 @@
       <view class='item bd'>
         <icon class='iconfont icon-youhuiquan'></icon>
         <text>领取优惠券</text>
-        <navigator url="/pages/logs/logs" open-type='navigate' hover-class="none">
+        <navigator url="/pages/personal/collect-coupons/collect-coupons" open-type='navigate' hover-class="none">
           <icon class='iconfont icon-xiangyou'></icon>
         </navigator>
       </view>

@@ -116,6 +116,51 @@ function wxPromisify(fn) {
   }
 }
 
+/**
+ * 订单状态
+ * 交易状态： 0 等待卖家发货 、 1 付款确认中 、2 等待买家付款 、3 卖家已发货 、 4 交易成功 、5 交易关闭 、6 退款中的订单
+ */
+function tradingStatus (status) {
+  let tradingName = '';
+  switch (status) {
+    case 0: tradingName = '等待卖家发货';break;
+    case 1: tradingName = '付款确认中'; break;
+    case 2: tradingName = '等待买家付款'; break;
+    case 3: tradingName = '卖家已发货'; break;
+    case 4: tradingName = '交易成功'; break;
+    case 5: tradingName = '交易关闭'; break;
+    case 6: tradingName = '退款中的订单'; break;
+    default: tradingName = '';break;
+  }
+
+  return tradingName;
+}
+
+/**
+ * 退换 时间换算 是否超过退换货的时间
+ * val 格式：yyyy-MM-dd hh:mm:ss
+ * time 退换货的时间限制
+ */
+function limitedTime(val,time) {
+  let isExceed = false;//是否超过退换货的时间
+  if (!val) {
+    return;
+  }
+  let date = new Date(val);
+  let copyDate = new Date(val);
+  copyDate.setDate(copyDate.getDate() + time);
+  let millisecond = date.getTime();//订单时间毫秒数
+  let lastDate = copyDate.getTime();//订单time天后的毫秒数
+  let nowDate = new Date().getTime();//当前时间毫秒数
+
+  let differenceDate = lastDate - nowDate;//time
+  if (differenceDate < 0) {
+    isExceed = true;
+  }
+
+  return isExceed;
+}
+
 module.exports = {
   formatTime: formatTime,
   showModal: showModal,
@@ -124,4 +169,6 @@ module.exports = {
   getStorage: getStorage,
   getSetting: getSetting,
   wxPromisify: wxPromisify,
+  tradingStatus: tradingStatus,
+  limitedTime: limitedTime,
 }

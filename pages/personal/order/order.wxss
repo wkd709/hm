@@ -45,3 +45,156 @@
   border-radius: 40rpx;
   margin: 0 auto;
 }
+
+.list-card {
+  width: 95%;
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+}
+.list-card .title-card text {
+  font-size: 26rpx;
+  color: #2a2a2a;
+  max-width: 400rpx;
+  display: inline-block;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top:-5rpx;
+}
+
+.list-card .title-card .iconfont{
+  font-size: 35rpx;
+  margin-right: 10rpx;
+  vertical-align: text-bottom;
+}
+
+.list-card .title-card .status-text {
+  float: right;
+  color: #ff3c06;
+  font-size: 24rpx;
+  line-height: 58rpx;
+}
+
+.list-card .item-card {
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.list-card .item-card image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+}
+
+.list-card .item-card .tpl-wrapper {
+  flex: 1;
+  margin: 0 10rpx;
+}
+
+.list-card .item-card .tpl-wrapper .title {
+  font-size: 24rpx;
+  max-height: 80rpx;
+  overflow: hidden;
+  text-align: left;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.list-card .price-box .unitPrice {
+  font-size: 24rpx;
+  text-align: right;
+}
+.list-card .price-box .num {
+  font-size: 24rpx;
+  color: #8a8a8a;
+  text-align: right;
+}
+.list-card .detailed {
+  color: #8a8a8a;
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
+.list-card .total-price {
+  text-align: right;
+  font-size: 24rpx;
+}
+.list-card .total-price text {
+  font-size: 28rpx;
+}
+.list-card .hj-bottom {
+  height: 50rpx;
+  margin: 20rpx 0;
+}
+.list-card .hj-bottom .more {
+  float: left;
+  font-size: 28rpx;
+  color: #636267;
+  line-height: 50rpx;
+  padding: 0 10rpx;
+}
+.list-card .hj-bottom .btn {
+  font-size: 28rpx;
+  padding: 6rpx 20rpx;
+  color: #979797;
+  border: 2rpx solid #979797;
+  border-radius: 30rpx;
+  float: right;
+  margin-left: 20rpx;
+}
+.list-card .hj-bottom .comment {
+ color: #f64322;
+ border-color: #f64322;
+}
+
+.hj-bottom {
+  position: relative;
+}
+.hj-bottom .more-list {
+  position: absolute;
+  top: 55rpx;
+  z-index: 1;
+  background: rgba(0,0,0, 0.7);
+  border-radius: 10rpx;
+  display: none;
+}
+.hj-bottom .more-list.active {
+  display: block;
+}
+.hj-bottom .more-list .sj {
+  width: 0;
+  height: 0;
+  border: 14rpx solid transparent;
+  border-bottom-color:rgba(0,0,0, 0.7);
+  position: absolute;
+  top: -28rpx;
+  left: 20rpx;
+}
+
+.hj-bottom .more-list .more-item {
+  font-size: 26rpx;
+  color: #fff;
+  text-align: center;
+  padding: 0 10rpx;
+  line-height: 50rpx;
+  border-bottom: 2rpx solid #fff;
+} 
+.hj-bottom .more-list .more-item:last-child {
+  border-bottom: 0;
+}
+.list-card .Return-box {
+  font-size: 24rpx;
+  color: #f64322;
+  background: #fff1ec;
+  display: inline-block;
+  padding: 4rpx 6rpx;
+  border-radius: 6rpx;
+}

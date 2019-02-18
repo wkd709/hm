@@ -1,17 +1,61 @@
 <!--pages/personal/order/order.wxml-->
 
-<view class='container'>
+<view class='container' bindtap='tapFun'>
   <view class='order-box'>
     <view class='order-sort-wrap'>
       <view class='order-sort'>
-        <view class='order-sort-item {{pageType == item.type ? "active" : ""}}' wx:for='{{orderSort}}' wx:key='{{index}}'>{{item.name}}</view>
+        <view wx:for='{{orderSort}}' wx:key='{{index}}'
+        class='order-sort-item {{pageType == item.type ? "active" : ""}}' 
+        data-type="orderSort" data-pageType='{{item.type}}'>{{item.name}}</view>
       </view>
     </view>
-    <view class='order'>
-      <view class='defalut-order'>
+    <view class='order' wx:if='{{!isLoading}}'>
+      <view class='defalut-order' wx:if='{{!dateList || dateList.length <= 0}}'>
         <image src='/assets/images/e-order.png'></image>
         <view class='p'>您暂时没有任何订单哦！</view>
-        <view class='btn'>去首页逛逛吧</view>
+        <view class='btn' data-type='home'>去首页逛逛吧</view>
+      </view>
+      <view class='list-card' wx:for='{{dateList}}' wx:key='{{index}}' wx:if='{{pageType*1==item.status*1}}'>
+        <view class='title-card'>
+          <icon class='iconfont icon-shouye1'></icon>
+          <text>{{item.storeName}}</text>
+          <view class='status-text'>{{item.orderStatusName}}</view>
+        </view>
+        <view class='item-card'>
+          <image src='{{item.img}}'></image>
+          <view class='tpl-wrapper'>
+            <view class='title'>{{item.title}}</view>
+            <view class='Return-box'>
+              <view class='returnTime'>{{item.returnTime}}天退换</view>
+            </view>
+            <view class='detailed'>
+              {{item.colorSort ? item.colorSort : ""}}
+               {{item.colorSort&&item.size ? ";" : ""}}
+              {{item.size ? item.size : ""}}
+            </view>
+          </view>
+          <view class='price-box'>
+            <view class='unitPrice'>￥{{item.unitPrice}}</view>
+            <view class='num'>×{{item.numer}}</view>
+          </view>
+        </view>
+        <view class='total-price'>共<text>{{item.numer}}</text>件商品 合计：￥<text>{{item.totalPrice}}</text></view>
+        <view class='hj-bottom'>
+          <view class='more' data-type="more" data-index='{{index}}' wx:if='{{item.tradingStatus == 2||item.tradingStatus == 4 || item.tradingStatus == 5}}'>更多</view>
+          <view class='more-list {{more == index ? "active" : ""}}'>
+            <view class='sj'></view>
+            <view class='more-item' wx:if="{{item.tradingStatus == 4 && item.isInvoice == 2}}">开发票</view>
+            <view class='more-item' wx:if="{{item.tradingStatus == 2}}">联系卖家</view>
+            <view class='more-item del-order' wx:if="{{item.tradingStatus == 2||item.tradingStatus==4||item.tradingStatus==5}}">删除订单</view>
+          </view>
+          <view class='btn comment' wx:if='{{item.tradingStatus == 2}}'>付款</view>
+          <view class='btn' wx:if='{{item.tradingStatus == 2&&item.tradingStatus == 0}}'>修改地址</view>
+          <view class='btn comment' wx:if="{{item.tradingStatus == 3}}">确认收货</view>
+          <view class='btn' wx:if="{{item.tradingStatus == 3}}">延长收货</view>
+          <view class='Logistics btn' wx:if='{{item.tradingStatus == 3 || item.tradingStatus == 4 || item.tradingStatus == 6}}'>查看物流</view>
+          <view class='comment btn' wx:if="{{item.tradingStatus == 4}}">{{!item.isComment? "评论" : "追加评论"}}</view>
+          <view class='btn' wx:if="{{item.tradingStatus == 0}}">修改地址</view>
+        </view>
       </view>
     </view>
   </view>
