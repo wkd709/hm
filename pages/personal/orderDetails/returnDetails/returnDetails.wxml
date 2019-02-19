@@ -3,6 +3,6 @@
 <view class='container'>
   <view class='title-name-box'>
     <view class='title'>{{dataObj.orderStatusName}}</view>
-    <!-- <view class='completeDate'>{{dataObj.negotiate.completeDate}}</view> -->
+    <view class='completeDate'>{{dataObj.completeDateFmt}}</view>
   </view>
 </view>

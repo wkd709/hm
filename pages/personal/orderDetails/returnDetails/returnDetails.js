@@ -39,8 +39,7 @@ Page({
         console.log(data);
         if (res.statusCode == 200) {
           data.orderStatusName = util.tradingStatus(data.tradingStatus);
-          this.dateFmt(data.negotiate.completeDate);
-
+          data.completeDateFmt = util.getDate(data.negotiate.completeDate, 'yyyy年MM月dd日 hh:mm');
           this.setData({"dataObj": data});
         }
       },
@@ -49,13 +48,6 @@ Page({
         this.setData({"dataObj": {}});
       }
     });
-  },
-  dateFmt: function (val) {//转换时间格式 例如： 2018年11月12日 00:00
-    let dateArr = [];
-    let dataDate = val;
-    console.log(new Date(val));
-    console.log(/(y+)/.test('yyyy年MM月dd日 hh:mm'));
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
