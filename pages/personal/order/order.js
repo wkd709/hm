@@ -14,7 +14,7 @@ Page({
       { name: '已完成', type: 5 },
       { name: '退换货', type: 6 },
     ],
-    pageType: 5,
+    pageType: 1,
     dateList: [],
     isLoading: true,
     more: -1,//更多的显示
@@ -26,7 +26,7 @@ Page({
   onLoad: function (options) {
     const type = options.type;
 
-    this.getData("5");
+    this.getData(type);
   },
   /**
    * 获取数据
@@ -95,6 +95,13 @@ Page({
     if (dataset.type && dataset.type == 'orderSort') this.getData(dataset.pagetype);
     //去首页
     if (dataset.type && dataset.type == 'home') wx.switchTab({ url: '/pages/index/index'});
+
+    //退单详情页
+    if (dataset.type && dataset.type == 'returnDetails') {
+      wx.navigateTo({
+        url: '/pages/personal/orderDetails/returnDetails/returnDetails?orderNum=' + dataset.ordernum
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

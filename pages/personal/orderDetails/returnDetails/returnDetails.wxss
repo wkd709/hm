@@ -1,0 +1,6 @@
+/* pages/personal/orderDetails/returnDetails/returnDetails.wxss */
+
+.title-name-box {
+  background: #fd5552;
+  height: 200rpx;
+}

@@ -7,7 +7,7 @@
   overflow-x: auto;
 }
 .order-box .order {
- overflow: hidden;
+  padding-bottom: 20rpx;
 }
 .order-box .order-sort-wrap .order-sort {
   width: 910rpx;
@@ -156,8 +156,8 @@
   margin-left: 20rpx;
 }
 .list-card .hj-bottom .comment {
- color: #f64322;
- border-color: #f64322;
+ color: #ff3c06;
+ border-color: #ff3c06;
 }
 
 .hj-bottom {
