@@ -1,33 +1,27 @@
-// pages/personal/orderDetails/returnDetails/returnDetails.js
-
+// pages/personal/orderDetails/orderDetails/orderDetails.js
 const util = require('../../../../utils/util.js');
-
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    dataObj: {},
-
+    detailsObj: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let loadData = options;
-    if (loadData.orderNum) {
-      this.getData(loadData.orderNum);
-    }
+    this.getData('265029317759605196');
   },
-  //获取数据
   getData: function (orderNum) {
     wx.showLoading({
       title: '加载中',
     });
-
+    
     wx.request({
-      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/order/ReturnsDetails",
+      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/order/orderDtails/"+orderNum,
       method: 'post',
       data: {
         "orderNum": orderNum
@@ -35,15 +29,21 @@ Page({
       success: (res) => {
         wx.hideLoading();
         let data = res.data.data;
+        data.orderStatusName = util.tradingStatus(data.tradingStatus);
+        if (data.tradingStatus == 2) {//待付款状态时 一天后自动关闭
+          
+          let tDate = new Date(data.date);
+          tDate.setDate(tDate.getDate() + 1);
+          data.countdown =  util.getCountdown(tDate);
+        }
+        
         if (res.statusCode == 200) {
-          data.orderStatusName = util.tradingStatus(data.tradingStatus);
-          data.completeDateFmt = util.getDate(data.negotiate.completeDate, 'yyyy年MM月dd日 hh:mm');
-          this.setData({"dataObj": data});
+          this.setData({'detailsObj':data});
         }
       },
       fail: (err) => {
         wx.hideLoading();
-        this.setData({"dataObj": {}});
+        this.setData({ 'detailsObj': '' });
       }
     });
   },

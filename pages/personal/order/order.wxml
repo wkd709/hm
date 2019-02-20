@@ -1,8 +1,8 @@
 <!--pages/personal/order/order.wxml-->
 
-<view class='container' bindtap='tapFun'>
+<view class='container'>
   <view class='order-box'>
-    <view class='order-sort-wrap'>
+    <view class='order-sort-wrap' bindtap='tapFun'>
       <view class='order-sort'>
         <view wx:for='{{orderSort}}' wx:key='{{index}}'
         class='order-sort-item {{pageType == item.type ? "active" : ""}}' 
@@ -21,7 +21,7 @@
           <text>{{item.storeName}}</text>
           <view class='status-text'>{{item.orderStatusName}}</view>
         </view>
-        <view class='item-card'>
+        <view class='item-card' data-type='orderDetails' data-orderNum='{{item.orderNum}}' bindtap='tapFun'>
           <image src='{{item.img}}'></image>
           <view class='tpl-wrapper'>
             <view class='title'>{{item.title}}</view>
@@ -40,16 +40,19 @@
           </view>
         </view>
         <view class='total-price'>共<text>{{item.numer}}</text>件商品 合计：￥<text>{{item.totalPrice}}</text></view>
-        <view class='hj-bottom'>
+        <view class='hj-bottom' bindtap='tapFun'>
           <view class='more' data-type="more" data-index='{{index}}' wx:if='{{item.tradingStatus == 2||item.tradingStatus == 4 || item.tradingStatus == 5}}'>更多</view>
           <view class='more-list {{more == index ? "active" : ""}}'>
             <view class='sj'></view>
             <view class='more-item' wx:if="{{item.tradingStatus == 4 && item.isInvoice == 2}}">开发票</view>
             <view class='more-item' wx:if="{{item.tradingStatus == 2}}">联系卖家</view>
-            <view class='more-item del-order' wx:if="{{item.tradingStatus==2||item.tradingStatus==4||item.tradingStatus==5}}">删除订单</view>
+            <view class='more-item del-order'
+              wx:if="{{item.tradingStatus==4||item.tradingStatus==5||dataset.tradingstatus == 7 || dataset.tradingstatus == 9}}"
+              data-type="del" data-tradingStatus="{{item.tradingStatus}}">删除订单</view>
           </view>
           <view class='btn comment' wx:if='{{item.tradingStatus == 2}}'>付款</view>
-          <view class='btn' wx:if='{{item.tradingStatus == 2&&item.tradingStatus == 0}}'>修改地址</view>
+          <view class='btn' wx:if='{{item.tradingStatus == 2||item.tradingStatus == 0}}'>修改地址</view>
+          <view class='btn' wx:if='{{item.tradingStatus == 2}}' data-type="del" data-tradingStatus="{{item.tradingStatus}}">取消订单</view>
           <view class='btn comment' wx:if="{{item.tradingStatus == 3}}">确认收货</view>
           <view class='Logistics btn' wx:if='{{item.tradingStatus == 3 || item.tradingStatus == 4 || item.tradingStatus == 6}}'>查看物流</view>
           <view class='comment btn' wx:if="{{item.tradingStatus == 4}}">{{!item.isComment? "评论" : "追加评论"}}</view>
@@ -61,4 +64,5 @@
       </view>
     </view>
   </view>
+  <cancelReason isDialog="{{isDelChange}}" bind:del="onDelOrder"></cancelReason>
 </view>

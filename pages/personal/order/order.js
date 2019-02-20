@@ -18,6 +18,7 @@ Page({
     dateList: [],
     isLoading: true,
     more: -1,//更多的显示
+    isDelChange: false,
   },
 
   /**
@@ -38,7 +39,7 @@ Page({
       title: '加载中',
     });
 
-    let postUrl = '/completed';
+    let postUrl = '/all';
     switch (type*1) {
       case 1:
         postUrl = '/all'; break; //全部
@@ -87,12 +88,15 @@ Page({
   //点击页面
   tapFun: function (event) {
     let dataset =  event.target.dataset;
+    let currentTarget = event.currentTarget.dataset;
+    
     //点击更多
     this.setData({ 'more': -1 });
     if (dataset.type&&dataset.type == 'more') this.setData({ 'more': dataset.index*1});
 
     //点击 顶部订单分类
     if (dataset.type && dataset.type == 'orderSort') this.getData(dataset.pagetype);
+
     //去首页
     if (dataset.type && dataset.type == 'home') wx.switchTab({ url: '/pages/index/index'});
 
@@ -102,6 +106,43 @@ Page({
         url: '/pages/personal/orderDetails/returnDetails/returnDetails?orderNum=' + dataset.ordernum
       });
     }
+    
+    //订单详情页
+    if (!dataset.type && currentTarget.type == 'orderDetails') {
+      wx.navigateTo({
+        url: '/pages/personal/orderDetails/orderDetails/orderDetails?orderNum=' + currentTarget.ordernum
+      });
+    }
+
+    //删除订单
+    if (dataset.type && dataset.type == 'del' && dataset.tradingstatus) {
+      //待付款
+      if (dataset.tradingstatus == 2) {
+        this.setData({"isDelChange":true});
+      }
+
+      //成功的订单
+      if (dataset.tradingstatus == 4 || dataset.tradingstatus == 5 
+      || dataset.tradingstatus == 7 || dataset.tradingstatus == 9 ) {
+        util
+          .showModal('确认删除订单？','删除之后可以从电脑端的回收站恢复')
+          .then(res=> {
+            // 调接口删除订单
+            util.showToast('删除成功', true);
+          })
+          .catch((err) => {
+            util.showToast('删除失败', false);
+          });
+      }
+    }
+  },
+   /**
+   * 子组件取消订单
+   */
+  onDelOrder: function (val) {
+    console.log(val);
+    //下一步调接口取消订单
+    util.showToast('取消成功', true);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

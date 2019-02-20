@@ -1,0 +1,38 @@
+/* pages/personal/orderDetails/orderDetails/orderDetails.wxss */
+
+.title-name-box {
+  background: #fd5552;
+  padding: 50rpx 60rpx;
+}
+.title-name-box .title {
+  font-size: 36rpx;
+  color: #fff;
+  line-height: 60rpx;
+}
+.title-name-box  .completeDate {
+  font-size: 28rpx;
+  color: #fff;
+}
+.logistics-box {
+  display: flex;
+  background: #fff;
+  padding: 40rpx 20rpx;
+  margin-bottom: 20rpx;
+}
+.logistics-box .iconfont {
+  font-size: 60rpx;
+  color: #fd5552;
+  margin-right: 20rpx;
+}
+.logistics-content .name{
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+.logistics-content .name text {
+  color: #999;
+  margin-left: 20rpx;
+}
+.logistics-content .address{
+  font-size: 28rpx;
+  line-height: 40rpx;
+}

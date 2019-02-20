@@ -181,7 +181,7 @@ function getDate (val, fmt) {
     "h+": date.getHours(), //小时
     "m+": date.getMinutes(), //分
     "s+": date.getSeconds(), //秒
-    "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+    "q+": Math.floor((date.getMonth() + 3) / 3),//季度
     "S": date.getMilliseconds() //毫秒
   };
   if (/(y+)/.test(fmt))
@@ -191,6 +191,25 @@ function getDate (val, fmt) {
       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 };
+
+/**
+ * 24小时倒计时 
+ * 时 分 例如：hh小时mm分钟
+ **/
+function getCountdown(val) {
+  let yDate = new Date(val);
+  let nowDate = new Date();
+  let cDate = yDate.getTime() - nowDate.getTime();
+  
+  if (cDate <= 0) {
+    return ;
+  }
+ 
+  let hour = Math.floor(cDate / (60 * 60 * 1000));
+  let minute = Math.round(cDate / (60 * 1000) - 60 * hour);
+  
+  return hour + "小时" + minute + "分钟";
+}
 
 module.exports = {
   formatTime: formatTime,
@@ -203,4 +222,5 @@ module.exports = {
   tradingStatus: tradingStatus,
   limitedTime: limitedTime,
   getDate: getDate,
+  getCountdown: getCountdown,
 }

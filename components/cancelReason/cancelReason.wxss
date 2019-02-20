@@ -1,0 +1,61 @@
+/* components/cancelReason/cancelReason.wxss */
+@import "../../font.wxss";
+
+
+.dialog-model {
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-model .dialog-box {
+  width: 90%;
+  min-height: 200rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+.dialog-model .title-dialog {
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #2fb2f8;
+  padding: 0 20rpx;
+  border-bottom: 5rpx solid #2fb2f8;
+}
+.dialog-model .content-dialog .item-c {
+  line-height: 80rpx;
+  font-size: 32rpx;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #dcdcdc;
+}
+
+.content-dialog .item-c .iconfont {
+  float: right;
+  font-size: 60rpx;
+  color: #2fb2f8;
+  display: none;
+}
+.content-dialog .item-c.active .iconfont{
+  display: block;
+}
+.dialog-model .btn-box {
+  display: flex;
+}
+.dialog-model .btn-box .btn {
+  width: 50%;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+  border-right: 2rpx solid #dcdcdc;
+}
+.dialog-model .btn-box .btn:last-child {
+  border: none;
+}

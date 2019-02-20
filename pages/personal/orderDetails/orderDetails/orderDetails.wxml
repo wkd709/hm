@@ -1,0 +1,14 @@
+<!--pages/personal/orderDetails/orderDetails/orderDetails.wxml-->
+<view class='container'>
+  <view class='title-name-box' wx:if="{{detailsObj}}">
+    <view class='title'>{{detailsObj.orderStatusName}}</view>
+    <view class='completeDate'>{{detailsObj.countdown ? "剩"+detailsObj.countdown+"自动关闭" : "订单已关闭"}}</view>
+  </view>
+  <view class='logistics-box'>
+    <icon class='iconfont icon-dingwei'></icon>
+    <view class='logistics-content'>
+      <view class='name'>{{detailsObj.transportDetails.receiver}} <text>86-{{detailsObj.transportDetails.phone}}</text></view>
+      <view class='address'>{{detailsObj.transportDetails.address}}</view>
+    </view>
+  </view>
+</view>

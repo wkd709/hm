@@ -1,8 +1,60 @@
 <!--pages/personal/orderDetails/returnDetails/returnDetails.wxml-->
-
-<view class='container'>
+<view class='container' wx:if='{{dataObj&&dataObj.orderNum}}'>
   <view class='title-name-box'>
     <view class='title'>{{dataObj.orderStatusName}}</view>
     <view class='completeDate'>{{dataObj.completeDateFmt}}</view>
+  </view>
+  <view class='list-des'>
+    <view class='item-des border-b'>
+      <text>退款总金额</text>
+      <text class='right mark'>￥109.00</text>
+    </view>
+    <view class='item-des'>
+      <text>退款花呗</text>
+      <text class='right'>￥109.00</text>
+    </view>
+    <view class='item-des'>
+      <text>协商历史</text>
+      <icon class='right iconfont icon-xiangyou'></icon>
+    </view>
+  </view>
+  <view class='list-des'>
+    <view class='item-des'>
+      <text>运费险</text>
+      <icon class='right iconfont icon-xiangyou'></icon>
+    </view>
+  </view>
+  <view class='list-des'>
+    <view class='item-des'>
+      <text>退款信息</text>
+    </view>
+    <view class='content-des'>
+      <image src='{{dataObj.img}}'></image>
+      <view class='txt-des'>
+        <view class='title-des'>{{dataObj.title}}</view>
+        <view class='sort-des'>
+          {{dataObj.colorSort ? "颜色分类：" + dataObj.colorSort : ""}}  
+          {{dataObj.size ? "尺寸："+dataObj.size : ""}}
+        </view>
+      </view>
+    </view>
+    <view class='des-details'>
+      <view class='item'>
+        <text class='t-text'>退款原因：</text>
+        <text class='c-text'>{{dataObj.reason}}</text>
+      </view>
+      <view class='item'>
+        <text class='t-text'>退款金额：</text>
+        <text class='c-text'>￥{{dataObj.eventMoney}}</text>
+      </view>
+      <view class='item'>
+        <text class='t-text'>申请时间：</text>
+        <text class='c-text'>{{dataObj.applicationDate}}</text>
+      </view>
+      <view class='item'>
+        <text class='t-text'>退款编号：</text>
+        <text class='c-text'>{{dataObj.returnNum}}</text>
+      </view>
+    </view>
   </view>
 </view>

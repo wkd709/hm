@@ -1,0 +1,17 @@
+<!--components/cancelReason/cancelReason.wxml-->
+<view class='dialog-model' wx:if='{{isDialog}}'>
+  <view class='dialog-box' bindtap='btnChange'>
+    <view class='title-dialog'>请选择取消订单的理由</view>
+    <view class='content-dialog'>
+      <view wx:for="{{list}}" wx:key='{{index}}'
+        data-id="{{item.type}}" data-type='item' class='item-c {{item.type==activeType?"active":""}}'>
+        {{item.name}}
+        <icon class='iconfont icon-hook'></icon>
+      </view>
+    </view>
+    <view class='btn-box'>
+      <view class='btn cancel' data-type='cancel'>取消</view>
+      <view class='btn yes' data-type='yes'>确定</view>
+    </view>
+  </view>
+</view>
