@@ -6,14 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detailsObj: {},
+    detailsObj: '',
+    more: false,
+    isDelChange: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData('265029317759605196');
+    this.getData(options.orderNum);
   },
   getData: function (orderNum) {
     wx.showLoading({
@@ -46,6 +48,52 @@ Page({
         this.setData({ 'detailsObj': '' });
       }
     });
+  },
+  // 事件
+  clickTap: function (event) {
+    let dataset = event.target.dataset;
+    console.log(dataset);
+
+    //更多
+    if (dataset.type == 'more') {
+      this.setData({ "more": !this.data.more});
+    }
+
+    //删除订单
+    if (dataset.type == 'del') {
+      //待付款
+      if (dataset.tradingstatus == 2) {
+        this.setData({ "isDelChange": true });
+      }
+
+      //成功的订单
+      if (dataset.tradingstatus == 4 || dataset.tradingstatus == 5
+        || dataset.tradingstatus == 7 || dataset.tradingstatus == 9) {
+        util
+          .showModal('确认删除订单？', '删除之后可以从电脑端的回收站恢复')
+          .then(res => {
+            // 调接口删除订单
+            util.showToast('删除成功', true);
+          })
+          .catch((err) => {
+            util.showToast('删除失败', false);
+          });
+      }
+
+    }
+
+    //付款
+    if (dataset.type == 'payment') {
+      util.showToast('付款成功', true);
+    }
+  },
+  /**
+   * 子组件取消订单
+   */
+  onDelOrder: function (val) {
+    console.log(val);
+    //下一步调接口取消订单
+    util.showToast('取消成功', true);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

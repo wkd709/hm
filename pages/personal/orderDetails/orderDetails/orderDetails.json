@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "cancelReason": "/components/cancelReason/cancelReason"
+  },
   "navigationBarTitleText": "订单详情页"
 }

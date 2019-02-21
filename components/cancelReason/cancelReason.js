@@ -1,5 +1,5 @@
 // components/cancelReason/cancelReason.js
-// components/loading/loading.js
+const util = require('../../utils/util.js');
 Component({
   /**
    * 组件的属性列表
@@ -40,6 +40,10 @@ Component({
 
       //确定按钮
       if (dataset.type == 'yes') {
+        if (this.data.activeType <= 0) {
+          util.showToast('请选择一项原因', false);
+          return false;
+        }
         this.setData({ "isDialog": false  });
         this.triggerEvent("del", { "activeType": this.data.activeType });
       }

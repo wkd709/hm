@@ -108,7 +108,8 @@ Page({
     }
     
     //订单详情页
-    if (!dataset.type && currentTarget.type == 'orderDetails') {
+    console.log(dataset, currentTarget);
+    if (!dataset.type && currentTarget.type == 'orderDetails' && currentTarget.tradingstatus<6) {
       wx.navigateTo({
         url: '/pages/personal/orderDetails/orderDetails/orderDetails?orderNum=' + currentTarget.ordernum
       });
@@ -134,6 +135,11 @@ Page({
             util.showToast('删除失败', false);
           });
       }
+    }
+
+    //付款
+    if (dataset.type == 'payment') {
+      util.showToast('付款成功', true);
     }
   },
    /**

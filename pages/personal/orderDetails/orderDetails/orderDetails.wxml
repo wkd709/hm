@@ -1,8 +1,8 @@
 <!--pages/personal/orderDetails/orderDetails/orderDetails.wxml-->
-<view class='container'>
-  <view class='title-name-box' wx:if="{{detailsObj}}">
+<view class='container' wx:if="{{detailsObj}}">
+  <view class='title-name-box'>
     <view class='title'>{{detailsObj.orderStatusName}}</view>
-    <view class='completeDate'>{{detailsObj.countdown ? "剩"+detailsObj.countdown+"自动关闭" : "订单已关闭"}}</view>
+    <view class='completeDate' wx:if='{{detailsObj.tradingStatus==2}}'>{{detailsObj.countdown ? "剩"+detailsObj.countdown+"自动关闭" : "订单已关闭"}}</view>
   </view>
   <view class='logistics-box'>
     <icon class='iconfont icon-dingwei'></icon>
@@ -11,4 +11,71 @@
       <view class='address'>{{detailsObj.transportDetails.address}}</view>
     </view>
   </view>
+  <view class='orderDetails'>
+    <view class='title-card'>
+      <icon class='iconfont icon-shouye1'></icon>
+      <text>{{detailsObj.storeName}}</text>
+    </view>
+    <view class='item-card'>
+      <image src='{{detailsObj.img}}'></image>
+      <view class='tpl-wrapper'>
+        <view class='title'>{{detailsObj.title}}</view>
+        <view class='Return-box'>
+          <view class='returnTime'>{{detailsObj.returnTime}}天退换</view>
+        </view>
+        <view class='detailed'>
+          {{detailsObj.colorSort ? item.colorSort : ""}}
+            {{detailsObj.colorSort&&item.size ? ";" : ""}}
+          {{detailsObj.size ? detailsObj.size : ""}}
+        </view>
+      </view>
+      <view class='price-box'>
+        <view class='unitPrice'>￥{{detailsObj.unitPrice}}</view>
+        <view class='num'>×{{detailsObj.numer}}</view>
+      </view>
+    </view>
+    <view class='price-list'>
+      <view class='price-item'>
+        商品总价 <text>￥{{detailsObj.totalPrice}}</text>
+      </view>
+       <view class='price-item'>
+        运费（快递） <text>￥0.00</text>
+      </view>
+      <view class='price-item total-price'>
+        订单总价 <text>￥{{detailsObj.totalPrice}}</text>
+      </view>
+      <view class='price-item payment-price'>
+        <view class='sj'></view>
+        需付款 <text>￥{{detailsObj.totalPrice}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='OrderOther'>
+    <view class='title'>订单信息</view>
+    <view class='other-content'>
+      <view class='item'>天猫积分： <text>获得{{detailsObj.tmIntegral}}点积分</text></view>
+      <view class='item'>订单编号： <text>{{detailsObj.orderNum}}</text></view>
+      <view class='item'>支付宝交易号：<text>{{detailsObj.zfbTransactionNum}}</text></view>
+      <view class='item'>创建时间：<text>{{detailsObj.date}}</text></view>
+    </view>
+  </view>
+  <view class='fixed-bottom' bindtap='clickTap'>
+    <view class='more' data-type="more" wx:if='{{detailsObj.tradingStatus == 2||detailsObj.tradingStatus == 4 ||detailsObj.tradingStatus == 5}}'>更多</view>
+    <view class='more-list {{more ? "active":""}}'>
+      <view class='sj'></view>
+      <view class='more-item' wx:if="{{detailsObj.tradingStatus == 4 && detailsObj.isInvoice == 2}}">开发票</view>
+      <view class='more-item' wx:if="{{detailsObj.tradingStatus == 2}}">联系卖家</view>
+      <view class='more-item del-order' wx:if="{{detailsObj.tradingStatus==4||detailsObj.tradingStatus==5||detailsObj.tradingstatus == 7 || detailsObj.tradingstatus == 9}}" data-type="del" data-orderNum="{{detailsObj.orderNum}}" data-tradingStatus="{{detailsObj.tradingStatus}}">删除订单</view>
+    </view>
+    <view class='btn comment' wx:if='{{detailsObj.tradingStatus == 2}}' data-type="payment" data-tradingStatus="{{detailsObj.tradingStatus}}" data-orderNum="{{detailsObj.orderNum}}">付款</view>
+    <view class='btn' wx:if='{{detailsObj.tradingStatus == 2}}' data-type="del" data-tradingStatus="{{detailsObj.tradingStatus}}" data-orderNum="{{detailsObj.orderNum}}">取消订单</view>
+    <view class='btn' wx:if='{{detailsObj.tradingStatus == 2||detailsObj.tradingStatus == 0}}'>修改地址</view>
+    <view class='btn comment' wx:if="{{detailsObj.tradingStatus == 3}}">确认收货</view>
+    <view class='Logistics btn' wx:if='{{detailsObj.tradingStatus == 3 || detailsObj.tradingStatus == 4 || detailsObj.tradingStatus == 6}}'>查看物流</view>
+    <view class='comment btn' wx:if="{{detailsObj.tradingStatus == 4}}">{{!detailsObj.isComment? "评论" : "追加评论"}}</view>
+    <view class='btn' wx:if="{{detailsObj.tradingStatus == 3 && !detailsObj.isExceed}}">退换货</view>
+    <view class='btn' wx:if="{{detailsObj.tradingStatus == 4 && !detailsObj.isExceed}}">申请售后</view>
+  </view>
+
+  <cancelReason isDialog="{{isDelChange}}" bind:del="onDelOrder"></cancelReason>
 </view>
