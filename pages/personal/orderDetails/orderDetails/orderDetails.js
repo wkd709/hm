@@ -79,7 +79,6 @@ Page({
             util.showToast('删除失败', false);
           });
       }
-
     }
 
     //付款
