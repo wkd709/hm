@@ -1,0 +1,427 @@
+/* pages/productDetails/productdetails.wxss */
+.container {
+  height: auto;
+}
+.group-warp .module-wrap-one {
+  position: relative;
+}
+.group-warp .module-wrap-one swiper {
+  height: 750rpx;
+}
+.group-warp .module-wrap-one .current {
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  font-size: 28rpx;
+  background-color: rgba(100,100,100,.6);
+  border-radius: 20rpx;
+  padding: 0 20rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+  color: #fff;
+}
+
+.group-warp .module-wrap-one .right-btns {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+.group-warp .module-wrap-one .right-btns .iconfont {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: rgba(0,0,0,.4);
+  color: #fff;
+  border-radius: 50%;
+  margin-left: 10rpx;
+  text-align: center;
+  font-size: 40rpx;
+}
+.group-warp .module-wrap {
+  background: #fff;
+}
+.group-warp .module-wrap .module-price {
+  padding: 0 20rpx;
+  color: #FF0036;
+  height: 36px;
+  line-height: 36px;
+}
+.group-warp .module-wrap .module-price .real-price {
+  font-size: 40rpx;
+  display: inline-block;
+  font-weight: 600;
+  margin-right: 20rpx;
+}
+.group-warp .module-wrap .module-price .real-price text {
+  font-size: 32rpx;
+}
+
+.group-warp .module-wrap .module-price .icon-text {
+  background-color: #fb6878;
+  color: #FFF;
+  font-size: 24rpx;
+  padding: 2rpx 4rpx;
+}
+.group-warp .module-wrap .module-title {
+  font-size: 28rpx;
+  color: #051B28;
+  line-height: 40rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  max-height: 126rpx;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  overflow: hidden;
+  word-break: break-all;
+  padding: 0 20rpx;
+}
+.group-warp .module-wrap .module-adds {
+  padding: 0 20rpx;
+  display: -webkit-box;
+  display: flex;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 60rpx;
+  margin-bottom: 20rpx;
+}
+.module-wrap .module-adds text {
+  text-align: left;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+.module-wrap .module-adds .delivery {
+  text-align: right;
+}
+
+.module-wrap .module-prom {
+  padding: 24rpx 20rpx;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.module-wrap .module-prom .l {
+  float: left;
+  width: 60rpx;
+  height: auto;
+  color: #999;
+  overflow: hidden;
+  font-size: 24rpx;
+  line-height:36rpx;
+}
+.module-prom .activitylist {
+  position: relative;
+  margin-left: 60rpx;
+  margin-right: 48rpx;
+  display: flex;
+}
+.module-prom .activitylist .ic-box {
+  border: 2rpx solid #FFF5F7;
+  background: #FFF5F7;
+  border-radius: 4rpx;
+  padding: 0rpx 6rpx;
+  font-size: 20rpx;
+  line-height: 36rpx;
+  height:36rpx;
+  color: #FF0036;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 10rpx;
+  position: relative;
+}
+.module-prom .activitylist .cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  position: relative;
+  top: 0;
+  display: block;
+  flex: 1;
+  line-height: 36rpx;
+  height:36rpx;
+}
+.module-prom .activitylist .cell .text {
+  font-size: 24rpx;
+  display: inline;
+}
+.module-prom .iconfont,.module-scene-item .iconfont ,.props-content .iconfont{
+  position: absolute;
+  right: 24rpx;
+  top: 10rpx;
+  height: 26rpx;
+  color: #ccc;
+}
+.module-scene-item .iconfont {
+  right: 6rpx;
+}
+.module-advantage {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.module-advantage .logo image {
+  width:560rpx;
+  height:45rpx;
+}
+.module-advantage .module-scene-wrap .module-scene-item {
+  position: relative;
+  padding: 20rpx 0;
+}
+.module-scene-item>.l {
+  float: left;
+  width: 60rpx;
+  height: auto;
+  font-size: 24rpx;
+  color: #999;
+}
+.module-scene-item>.r {
+  margin-left: 70rpx;
+  margin-right: 58rpx;
+}
+.module-advantage .module-scene-wrap .module-scene-item .cainiao-wrap .cainiao-cell {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #333;
+  font-size: 24rpx;
+}
+.module-advantage .module-scene-wrap .module-scene-item .cainiao-wrap .cainiao-icon image {
+  max-width: 140rpx;
+  height: 24rpx;
+  line-height: 1;
+  vertical-align: text-bottom;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+.module-advantage .module-scene-wrap .module-scene-item .cainiao-wrap .cainiao-icon {
+  color: #999;
+  font-size: 24rpx;
+}
+.module-props {
+  position: relative;
+}
+.module-props .props-content {
+  background-color: #FFF;
+  padding: 24rpx 20rpx;
+  color: #051b28;
+  position: relative;
+  line-height: 36rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.module-props .props-content>.l {
+  float: left;
+  width: 60rpx;
+  height: auto;
+  color: #999;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+.module-props .props-content>.r {
+  margin-left: 70rpx;
+  margin-right: 58rpx;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size:24rpx;
+}
+.module-review {
+  background: #fff;
+}
+.mui-tagscloud-main {
+  position: relative;
+  overflow: hidden;
+  padding: 20rpx;
+}
+.module-review .mui-tagscloud-title {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #666;
+}
+
+.module-review .mui-tagscloud-more {
+  position:absolute;
+  top: 4rpx;
+  right:24rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  -webkit-appearance: none;
+  color: #ff0036;
+  text-align: center;
+}
+
+.module-review .mui-tagscloud-ul {
+  list-style-type: none;
+  padding: 0;
+  max-height: 76rpx;
+  overflow: hidden;
+}
+.module-review .mui-tagscloud-ul .mui-tagscloud-li {
+  float: left;
+  background-color: #FEE;
+  color: #666;
+  margin: 12rpx 6rpx;
+  padding: 12rpx 18rpx;
+  text-align: center;
+  border-radius: 52rpx;
+  -moz-border-radius: 52rpx;
+  font-size: 24rpx;
+  line-height: 28rpx;
+}
+.module-review .mui-tagscloud-comments {
+  border-bottom: 2rpx solid #eee;
+  padding-bottom: 10rpx;
+}
+.module-review .mui-tagscloud-user {
+  line-height: 32rpx;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.module-review .mui-tagscloud-img {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 40rpx;
+  -moz-border-radius: 40rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.module-review .mui-tagscloud-name {
+  vertical-align: middle;
+  padding: 10rpx;
+  line-height: 44rpx;
+  color: #999;
+}
+
+.module-review .mui-tagscloud-content {
+  font-size: 26rpx;
+  line-height: 32rpx;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  height: 64rpx;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.module-review .mui-tagscloud-date {
+  font-size: 24rpx;
+  padding-top: 16rpx;
+  color: #999;
+  line-height: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.module-askall {
+  padding: 24rpx;
+  padding-top: 0; 
+  background: #FFF;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+
+.module-askall .askall-title {
+  font-size: 28rpx;
+  line-height: 32rpx;
+  font-weight: 400;
+  color: #666;
+}
+
+.module-askall .askall-title>.viewall {
+  position: absolute;
+  top: -18rpx;
+  right: 20rpx;
+  font-size: 26rpx;
+  color: #FF0036;
+}
+
+.module-askall .askall-list {
+  margin-top: 24rpx;
+  color: #051b28;
+}
+
+.module-askall .askall-list>.askall-item {
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.module-askall .askall-list>.askall-item .icon-ask {
+  display: inline-block;
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(90deg,#ff7b3f,#ff5000);
+  margin-right: 6rpx;
+  border-radius: 4rpx;
+}
+.module-askall .askall-list>.askall-item .answer-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.module-askall .askall-list>.askall-item .answer-count {
+  float: right;
+  color: #999;
+  font-family: Arial;
+}
+
+.module-desc .scrolltips .part-title {
+  padding: 0 30%;
+  text-align: center;
+  color: #999;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mui-flex>.cell {
+  width: 100rpx;
+  height: 2rpx;
+  background: #999;
+  display: block;
+}
+.module-desc .scrolltips .part-title .text {
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+.group-warp .module-wrap .module-desc {
+  background: #f2f2f2;
+  overflow: hidden;
+}
+.newAttraction {
+  line-height: 56rpx;
+  padding: 20rpx;
+  background: #fff;
+  color: #051B28;
+  text-align: center;
+  overflow: hidden;
+  font-size: 32rpx;
+  font-weight: 400;
+  margin-bottom: 20rpx;
+}
+.group-warp {
+  overflow: hidden;
+}
+.s-desc {
+  margin-bottom: 20rpx;
+}

@@ -40,5 +40,27 @@
       <span class="{{current == 1? 'active' : ''}}"></span>
     </view>
   </view>
-  <layer-module obj='{{layerObj}}' wx:if='{{isLayer}}' bind:event="onEvent"></layer-module>
+  <view class='you-likes'>
+    <view class='like-title'>猜你喜欢 <text>EXPLORE</text></view>
+    <view class='like-list'>
+      <view class='like-item' wx:for="{{recommendLikes}}" wx:key="index" wx:for-index="index"
+        bindtap="tapDetails" data-id='{{item.itemId}}'>
+        <view class='img-wrapper'>
+          <image src='{{item.itemImg}}'></image>
+        </view>
+        <view class='item-main'>
+          <view class='item-info'>{{item.shortTitle}}</view>
+          <view class='item-specs'>{{item.specDetail}}</view>
+          <view class='imp-main'>
+            <view class='item-price'>¥{{item.itemMPrice}}</view>
+            <view class='item-sales'>月销{{item.itemMonthSoldCount}}件</view>
+          </view>
+          <view class='icon'>
+            <icon class='iconfont icon-gouwucheman'></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <layer-module obj='{{layerObj}}' wx:if='{{isLayer}}' bind:event="onEvent"></layer-module> -->
 </view>

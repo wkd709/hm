@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/productDetails/productdetails",
+    "pages/index/index",
     "pages/personal/user/user",
     "pages/personal/order/order",
     "pages/personal/orderDetails/orderDetails/orderDetails",
     "pages/personal/orderDetails/returnDetails/returnDetails",
-    "pages/index/index",
     "pages/personal/collect-coupons/collect-coupons",
     "pages/sort/sort",
     "pages/personal/my-coupon/my-coupon",

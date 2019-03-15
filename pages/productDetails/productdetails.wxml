@@ -1,0 +1,151 @@
+<!--pages/productDetails/productdetails.wxml-->
+<view class='container' wx:if='{{!loading}}'>
+  <view class='scroll-view' scroll-y bindscroll='scroll'>
+    <view class='group-warp scroll-view-item' id="img">
+      <view class='module-wrap-one'> 
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular='true' interval="{{interval}}" duration="{{duration}}" bindchange='bindchange'>
+          <block wx:for="{{obj.item.images}}" wx:key="{{index}}">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image"/>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class='current'>{{slideIndex}}/{{obj.item.images.length}}</view>
+        <view class='right-btns'>
+          <icon class='iconfont icon-daohang'></icon>
+          <icon class='iconfont icon-gouwucheman'></icon>
+        </view>
+      </view>
+      <view class='module-wrap'>
+        <view class='module-price'>
+          <view class='real-price'><text>¥</text>{{obj.price.price.priceText}}</view>
+          <text class='icon-text' wx:for='{{obj.price.priceTag}}' wx:key='{{index}}'>{{item.text}}</text>
+        </view>
+      </view>
+      <view class='module-wrap'>
+        <view class='module-title'>{{obj.item.title}}</view>
+      </view>
+      <view class='module-wrap'>
+        <view class='module-adds'>
+          <text class='postage'>{{obj.delivery.postage}}</text>
+          <text class='sales'>月销量{{obj.item.vagueSellCount}}件</text>
+          <text class='delivery'>{{obj.delivery.from}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp'>
+      <view class='module-wrap'>
+        <view class='module-prom'>
+          <text class='l'>{{obj.price.shopPromTitle}}</text>
+          <view class='J_activity activitylist' wx:for='{{obj.price.shopProm}}' wx:key='{{index}}'>
+            <view class='ic-box'>{{item.iconText}}</view>
+            <view class='cell'>
+              <view class='text' wx:for='{{item.content}}' wx:for-item='element' wx:key='*this'>{{element}} </view>
+            </view>
+          </view>
+          <icon class='iconfont icon-xiangyou'></icon>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp'>
+      <view class='module-advantage'>
+        <view class='logo'><image src='https://img.alicdn.com/tfs/TB1N_qLmvDH8KJjy1XcXXcpdXXa-740-63.png_320x320Q90s50.jpg_.webp'></image></view>
+        <view class='module-scene-wrap'>
+          <view class='module-scene-item'>
+            <view class="l">物流</view>
+            <view class="r">
+              <view class='cainiao-wrap'>
+                <view class="cainiao-cell"> 至{{obj.delivery.to}}：{{obj.delivery.extras.PostTime.text}}</view>
+                <view class="cainiao-icon"><image src="{{obj.delivery.extras.PostTime.icon}}"></image>{{obj.delivery.extras.PostTime.serviceSimpleDesc}} </view>
+              </view>
+            </view>
+            <icon class='iconfont icon-xiangyou'></icon>
+          </view>
+          <view class='module-scene-item'>
+            <view class="l">服务</view>
+            <view class="r">
+              <view class='cainiao-wrap'>
+                <view class="cainiao-cell">{{obj.consumerProtection.special.items[0].title}}</view>
+                <view class="cainiao-icon"><image src="{{obj.consumerProtection.special.logo}}"></image>{{obj.consumerProtection.special.text}} </view>
+              </view>
+            </view>
+            <icon class='iconfont icon-xiangyou'></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp'>
+      <view class='module-props'>
+        <view class='props-content'>
+          <view class="l">参数</view>
+          <view class="r">{{obj.props.propsCut}}</view>
+          <icon class='iconfont icon-xiangyou'></icon>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp' id='evaluation'>
+      <view class='module-props'>
+        <view class='module-review'>
+          <view class='mui-tagscloud-main'>
+            <view class='mui-tagscloud-title'>
+              商品评价（{{obj.rate.totalCount}})
+            
+              <view class="mui-tagscloud-more rule-color-main">
+                查看全部
+                <icon class='iconfont icon-xiangyou'></icon>
+              </view>
+            </view>
+            <view class='mui-tagscloud-ul'>
+              <view class='mui-tagscloud-li' wx:for='{{obj.rate.keywords}}' wx:key='index'>{{item.word}}({{item.count}})</view>
+            </view>
+            <view class='mui-tagscloud-comments'>
+              <view class='mui-tagscloud-user'>
+                <image class='mui-tagscloud-img' src='{{obj.rate.rateList[0].headPic}}'></image>
+                <text class='mui-tagscloud-name'>{{obj.rate.rateList[0].userName}}</text>
+              </view>
+              <view class='mui-tagscloud-content'>{{obj.rate.rateList[0].content}}</view>
+              <view class='mui-tagscloud-date'>{{obj.rate.rateList[0].dateTime}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='module-wrap'>
+        <view class='module-askall'>
+          <view class='askall-title'>
+            {{obj.vertical.askAll.title}}
+            <view class="viewall rule-color-main">
+              查看全部
+              <icon class='iconfont icon-xiangyou'></icon>
+            </view>
+          </view>
+          <view class='askall-list'>
+            <view class='askall-item' wx:for='{{obj.vertical.askAll.model4XList}}' wx:key='index'>
+              <text class='icon-ask'>问</text>
+              <text class='answer-text'>{{item.askText}}</text>
+              <text class='answer-count'>{{item.answerCountText}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp' id='details'>
+      <view class='module-wrap'>
+        <view class='module-desc'>
+          <view class='scrolltips'>
+            <view class='part-title mui-flex'>
+              <view class='cell'></view>
+              <text class='text'>详情</text>
+              <view class='cell'></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='group-warp'>
+      <view class='newAttraction'>{{obj.item.subtitle}}</view>
+      <view class='s-desc'>
+        <image wx:for='{{obj.item.tmallDescUrl}}' wx:key='index' src='{{item}}' mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+</view>

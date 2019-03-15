@@ -21,13 +21,14 @@ Page({
     duration: 1000,
     circular: true,
     goodsSorts: [],//分类
+    recommendLikes:[],//猜你喜欢
     current: 0,//分类Index
     qqmapsdk: '',//地图
     mapInfo: {},//地理位置
 
     // layer组件
-    layerObj: {},
-    isLayer: false,
+    // layerObj: {},
+    // isLayer: false,
   },
   onPullDownRefresh:function() {//监听下拉事件
     // wx.stopPullDownRefresh();//停止当前页面下拉刷新
@@ -41,34 +42,6 @@ Page({
         var data = JSON.stringify(res.authSetting);
         if (data != '{}') {// !== "{}" 代表不是第一次进入
           if (!res.authSetting['scope.userLocation']) {//未授权获取地址
-            // var obj = {
-            //   title: '请求授权当前位置',
-            //   content: '需要获取您的地理位置，请确认授权'
-            // }
-            // self.setData({ 'layerObj': obj, isLayer: true});
-
-            // util
-            //   .showModal('请求授权当前位置','需要获取您的地理位置，请确认授权')
-            //   .then(res=> {
-            //     wx.openSetting({
-            //       success(res) {
-            //         console.log(res, 1);
-            //         if (res.authSetting['scope.userLocation']) {//授权获取地址成功
-            //           self.getArea();
-            //         } else {
-            //           util.showToast('授权失败', false);
-            //         }
-            //       },
-            //       fail(err) {
-            //         util.showToast('授权失败', false);
-            //       }
-            //     })
-            //   })
-            //   .catch((err) => {
-            //     util.showToast('授权失败', false);
-            //   });
-
-
             wx.showModal({
               title: '请求授权当前位置',
               content: '需要获取您的地理位置，请确认授权',
@@ -89,6 +62,7 @@ Page({
         }
       }
     })
+   
     this.getData();
 
     //初始化地图
@@ -105,7 +79,6 @@ Page({
       this.setting();
     } else {//取消
       this.setData({ isLayer: false });
-      
     }
   },
   map(latitude, longitude) {
@@ -140,6 +113,22 @@ Page({
         }
       }
     });
+    
+    //猜你喜欢
+    wx.request({
+      method: 'post',
+      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/recommend_like",
+      success: (res) => {
+        let data = res.data.data;
+        console.log(data);
+        this.setData({"recommendLikes":data});
+      }
+    });
+  },
+  tapDetails(e) {//点击进入详情页
+    let id = e.target.dataset.id || e.currentTarget.dataset.id;
+    if (!id) return false;
+    wx.navigateTo({url: '/pages/productDetails/productdetails?id='+id});
   },
   getArea() {//获取当前位置
     var self = this;

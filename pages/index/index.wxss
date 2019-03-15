@@ -151,3 +151,133 @@
 .home-sorts .sorts-current span.active {
   background: #999;
 }
+
+.you-likes {
+  margin-top: 20rpx;
+}
+.you-likes .like-title {
+  background: #fff;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+  line-height: 70rpx;
+  margin-bottom: 2rpx;
+}
+.you-likes .like-title text {
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #1B5;
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transform: scale(1.14285714);
+  transform: scale(1.14285714);
+}
+.like-list {
+  overflow: hidden;
+  background: #f2f2f2;
+  margin-bottom: 50rpx;
+}
+
+.like-item {
+  width: 33.33%;
+  float: left;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 2rpx;
+  position: relative;
+}
+.like-item:nth-child(3n) {
+  right: -2rpx;
+}
+.like-item:nth-child(3n+1) {
+  left: -2rpx;
+}
+.like-item .img-wrapper image {
+  width: 218rpx;
+  height: 218rpx;
+  margin: 0 auto;
+}
+
+.like-item .item-main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10rpx;
+}
+
+.like-item .item-main .item-info {
+  font-size: 26rpx;
+  color: #313D44;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.like-item .item-main .item-specs {
+  padding: 0;
+  background-color: transparent;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666;
+  white-space: nowrap;
+}
+
+.like-item .item-main .imp-main {
+  margin-top: 20rpx;
+}
+
+.like-item .item-main .imp-main .item-price {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 700;
+  font-family: Helvetica;
+  line-height: 1.1;
+}
+
+.like-item .item-main .imp-main .item-sales {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-transform: scale(.83333333);
+  transform: scale(.83333333);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  color: #9B9B9B;
+  font-size: 24rpx;
+}
+
+.like-item .icon {
+  background: #de2013;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+}
+.like-item .icon .iconfont {
+  font-size: 28rpx;
+  color: #fff;
+  margin-top: -12rpx;
+}
