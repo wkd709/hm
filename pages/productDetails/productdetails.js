@@ -12,6 +12,11 @@ Page({
     interval: 1000,
     duration: 500,
     slideIndex: 1,
+    //滚动
+    screenHeight: 600,
+    toView: 'img',
+    navActive: 'img',
+    isFixed: false,
   },
 
   /**
@@ -20,12 +25,45 @@ Page({
   onLoad: function (options) {
     this.getData();
   },
+  scroll: function (ev) {//滚动
+    let event = ev.detail;
+    let actView = 'img';
+    let isFixed = false;
+    if (event.scrollTop > 10 ) {
+      isFixed = true;
+    }
+    if (600 > event.scrollTop) {
+      actView = 'img';
+    } else if (600 <= event.scrollTop && event.scrollTop < 900) {
+      actView = 'evaluation';
+    } else if (event.scrollTop >= 900) {
+      actView = 'details';
+    }
 
+    this.setData({ 'isFixed': isFixed, 'navActive': actView});
+  },
+  upper() {//滚动到顶部
+    this.setData({ 'isFixed': false });
+  },
+  switchTab(e) {//跳转
+    let event = e.target.dataset || e.currentTarget.dataset;
+    //跳转首页
+    if (event.type='home') {
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let self = this;
+    wx.getSystemInfo({
+      success(res) {
+        self.setData({ 'screenHeight': res.screenHeight});
+      }
+    })
   },
   getData() {//获取页面数据
     wx.showLoading({
@@ -47,11 +85,14 @@ Page({
       }
     });
   },
-  scroll(event) {//滚动事件
-    console.log(event);
+  moveTap(e) {
+    let event = e.target.dataset || e.currentTarget.dataset;
+    if (!event.type || event.type == this.data.toView) {
+      return false;
+    }
+    this.setData({ 'toView': event.type, 'navActive': event.type});
   },
   bindchange(event) {
-    console.log(event);
     let current = event.detail;
     this.setData({ 'slideIndex': current.current*1+1 });
   },

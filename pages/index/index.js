@@ -1,12 +1,13 @@
 //index.js
 
 const util = require('../../utils/util.js');
+import { wxRequest } from '../../utils/http.js';
 const config = require('../../utils/config.js');
 const QQMapWX = require('../../libs/qqmap-wx-jssdk.js'); //地图
+const { regeneratorRuntime } = global;
 
 //获取应用实例
 const app = getApp();
-
 Page({
   data: {
     slideList: [
@@ -46,7 +47,6 @@ Page({
               title: '请求授权当前位置',
               content: '需要获取您的地理位置，请确认授权',
               success(res) {
-                console.log(res, 1);
                 if (res.confirm) {
                   self.setting();
                 } else if (res.cancel) {
@@ -62,14 +62,14 @@ Page({
         }
       }
     })
-   
-    this.getData();
 
     //初始化地图
-    var qqmapsdk = new QQMapWX({
+    let qqmapsdk = new QQMapWX({
       key: config.txMapKey
     });
     this.setData({qqmapsdk: qqmapsdk});
+   
+    this.getData();
   },
   //组件事件 
   onEvent: function (e) {
@@ -99,30 +99,26 @@ Page({
       }
     });
   },
-  getData() {//获取接口数据
+  getData: async function () {//获取接口数据
     //分类
-    wx.request({
-      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/all_sort",
-      success: (res) => {
-        if (res.data.success == 'true') {
-          this.data.goodsSorts[0] = res.data.data.splice(0, 10);
-          this.data.goodsSorts[1] = res.data.data;
-          this.setData({
-            goodsSorts: this.data.goodsSorts
-          })
-        }
-      }
+    wxRequest('/all_sort', 'get', {
+      hideLoading: false,
+      data: {},
+    }).then((res) => {
+      this.data.goodsSorts[0] = res.data.splice(0, 10);
+      this.data.goodsSorts[1] = res.data;
+      this.setData({
+        goodsSorts: this.data.goodsSorts
+      })
     });
-    
+
     //猜你喜欢
-    wx.request({
-      method: 'post',
-      url: "https://www.easy-mock.com/mock/5c2485795e41f925428ab20a/tmXcx/recommend_like",
-      success: (res) => {
-        let data = res.data.data;
-        console.log(data);
-        this.setData({"recommendLikes":data});
-      }
+    wxRequest('/recommend_like', 'post', {
+      hideLoading: false,
+      data: {},
+    }).then((res) => {
+      let data = res.data;
+      this.setData({ "recommendLikes": data });
     });
   },
   tapDetails(e) {//点击进入详情页

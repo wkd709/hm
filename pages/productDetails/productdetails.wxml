@@ -1,7 +1,7 @@
 <!--pages/productDetails/productdetails.wxml-->
 <view class='container' wx:if='{{!loading}}'>
-  <view class='scroll-view' scroll-y bindscroll='scroll'>
-    <view class='group-warp scroll-view-item' id="img">
+ <scroll-view scroll-y style="height: {{screenHeight}}px;" scroll-into-view="{{toView}}" bindscrolltoupper='upper' bindscroll="scroll">
+    <view class='group-warp' id="img">
       <view class='module-wrap-one'> 
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular='true' interval="{{interval}}" duration="{{duration}}" bindchange='bindchange'>
           <block wx:for="{{obj.item.images}}" wx:key="{{index}}">
@@ -11,9 +11,15 @@
           </block>
         </swiper>
         <view class='current'>{{slideIndex}}/{{obj.item.images.length}}</view>
-        <view class='right-btns'>
+        <view class='right-btns {{isFixed?"btn-fixed":""}}'>
+          <icon class='iconfont icon-sousuo'></icon>
           <icon class='iconfont icon-daohang'></icon>
           <icon class='iconfont icon-gouwucheman'></icon>
+          <view class='header-nav'>
+            <view class='li-item {{navActive=="img"?"active": ""}}' data-type='img' bindtap='moveTap'>商品</view>
+            <view class='li-item {{navActive=="evaluation"?"active": ""}}' data-type='evaluation' bindtap='moveTap'>评价</view>
+            <view class='li-item {{navActive=="details"?"active": ""}}' data-type='details' bindtap='moveTap'>详情</view>
+          </view>
         </view>
       </view>
       <view class='module-wrap'>
@@ -74,7 +80,7 @@
         </view>
       </view>
     </view>
-    <view class='group-warp'>
+    <view class='group-warp' id='evaluation'>
       <view class='module-props'>
         <view class='props-content'>
           <view class="l">参数</view>
@@ -83,7 +89,7 @@
         </view>
       </view>
     </view>
-    <view class='group-warp' id='evaluation'>
+    <view class='group-warp'>
       <view class='module-props'>
         <view class='module-review'>
           <view class='mui-tagscloud-main'>
@@ -128,7 +134,7 @@
         </view>
       </view>
     </view>
-    <view class='group-warp' id='details'>
+    <view class='group-warp'>
       <view class='module-wrap'>
         <view class='module-desc'>
           <view class='scrolltips'>
@@ -141,11 +147,18 @@
         </view>
       </view>
     </view>
-    <view class='group-warp'>
+    <view class='group-warp' id='details'>
       <view class='newAttraction'>{{obj.item.subtitle}}</view>
       <view class='s-desc'>
         <image wx:for='{{obj.item.tmallDescUrl}}' wx:key='index' src='{{item}}' mode="widthFix"></image>
       </view>
     </view>
+  </scroll-view>
+  <view class='s-actionBar-container'>
+    <view class='icon' bindtap='switchTab' data-typ='home'>
+      <icon class='iconfont icon-shouye1'></icon>
+      <text>店铺</text>
+    </view>
+    <view class='trade-cart'>加入购物车</view>
   </view>
 </view>

@@ -1,5 +1,6 @@
 //app.js
 const util = require('./utils/util.js')
+global.regeneratorRuntime = require('./libs/regenerator/runtime-module');
 App({
   onLaunch: function () {
     var self = this;
