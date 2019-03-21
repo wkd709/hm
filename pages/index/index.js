@@ -10,6 +10,7 @@ const { regeneratorRuntime } = global;
 const app = getApp();
 Page({
   data: {
+    loading: false,
     slideList: [
       {img:'https://gw.alicdn.com/tfs/TB1AoIXeLDH8KJjy1XcXXcpdXXa-750-291.jpg_Q90.jpg'},
       {img:'https://img.alicdn.com/imgextra/i1/771510470/TB21SB0fIbI8KJjy1zdXXbe1VXa-771510470.jpg_Q90.jpg'},
@@ -113,13 +114,14 @@ Page({
     });
 
     //猜你喜欢
-    wxRequest('/recommend_like', 'post', {
+    await wxRequest('/recommend_like', 'post', {
       hideLoading: false,
       data: {},
     }).then((res) => {
       let data = res.data;
       this.setData({ "recommendLikes": data });
     });
+    this.setData({'loading':true});
   },
   tapDetails(e) {//点击进入详情页
     let id = e.target.dataset.id || e.currentTarget.dataset.id;

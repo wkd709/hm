@@ -1,96 +1,36 @@
-<view class='container'>
-  <view class='default-shopping' wx:if='{{!shopping}}'>
+<view class='container' wx:if='{{loading}}'>
+  <view class='default-shopping' wx:if='{{!obj.list||obj.list.length<=0}}'>
     <image src='../../assets/images/empty.png'></image>
     <p>您的购物车中没有商品哦!</p>
     <button class='back-home'>去首页逛逛吧</button>
   </view>
-  <view class='shopping' wx:if='{{shopping}}'>
+  <view class='shopping' wx:if='{{obj.list&&obj.list.length>0}}'>
     <view class='top'>
-      <view class='total'>共31件宝贝</view>
-      <view class='change' bindtap="isEditTap"><span>管理</span></view>
+      <view class='total'>共{{obj.fields.value}}件宝贝</view>
+      <view class='change' bindtap="isEditTap"><span>{{editName}}</span></view>
     </view>
-    <view class='order-list'>
+    <view class='order-list' wx:for='{{obj.list}}' wx:key='index'>
       <view class='total-shop'>
         <icon class='iconfont icon-shouye1'></icon>
-        天猫超市
+        {{item.seller}}
       </view>
-      <view class='grid-main'>
-        <span class='select'>
-          <icon type="success" color="red" size='20'></icon>
+      <view class='grid-main' wx:for='{{item.order}}' wx:key='index' wx:for-item="cell">
+        <span class='select' data-type='checkItem' data-itemId='{{cell.sellerId}}' data-itemStauts='{{!cell.checked}}' bindtap='checkAndInput'>
+          <icon type="success" color="red" size='20' wx:if='{{cell.checked}}'></icon>
         </span>
         <view class='order-des'>
-          <image class='img' src='http://img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
+          <image class='img' src='{{cell.pic}}'></image>
           <view class='des'>
-            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
-            <view class='bottom'>
-              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
-              <view class="ui-number">
-                <a class="decrease disabled" >-</a>
-                <input type="number" class="num" />
-                <a class="increase">+</a>
-              </view>
+            <view class='title'>{{cell.title}}</view>
+            <view class='edit-sku'>
+              <view class='sku-item'>{{cell.sku? cell.sku.title : ""}}</view>
             </view>
-          </view>
-        </view>
-      </view>
-      <view class='grid-main'>
-        <span class='select'>
-          <icon type="success" color="red" size='20'></icon>
-        </span>
-        <view class='order-des'>
-          <image class='img' src='http://img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
-          <view class='des'>
-            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
             <view class='bottom'>
-              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
-              <view class="ui-number">
-                <a class="decrease disabled" >-</a>
-                <input type="number" class="num" />
-                <a class="increase">+</a>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='order-list'>
-      <view class='total-shop'>
-        <icon class='iconfont icon-shouye1'></icon>
-        天猫超市
-      </view>
-      <view class='grid-main'>
-        <span class='select'>
-          <icon type="success" color="red" size='20'></icon>
-        </span>
-        <view class='order-des'>
-          <image class='img' src='http://img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
-          <view class='des'>
-            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
-            <view class='bottom'>
-              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
-              <view class="ui-number">
-                <a class="decrease disabled" >-</a>
-                <input type="number" class="num" />
-                <a class="increase">+</a>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class='grid-main'>
-        <span class='select'>
-          <icon type="success" color="red" size='20'></icon>
-        </span>
-        <view class='order-des'>
-          <image class='img' src='http://img.alicdn.com/bao/uploaded/i1/725677994/O1CN01j41xdy28vIdgAuuit_!!0-item_pic.jpg_sum.jpg'></image>
-          <view class='des'>
-            <view class='title'>蒙牛低脂高钙纯牛奶250ml*16盒低脂肪    高钙质</view>
-            <view class='bottom'>
-              <p class="price"><span class="ui-price-icon">￥</span>45.90</p>
-              <view class="ui-number">
-                <a class="decrease disabled" >-</a>
-                <input type="number" class="num" max='100' value='1' />
-                <a class="increase">+</a>
+              <p class="price"><span class="ui-price-icon">￥</span>{{cell.price.now}}</p>
+              <view class="ui-number"  data-type='input' data-itemId='{{cell.sellerId}}' bindtap='checkAndInput'>
+                <a class="decrease disabled" data-status='less'>-</a>
+                <input type="number" class="num" value='{{cell.amount.now}}'/>
+                <a class="increase" data-status='add'>+</a>
               </view>
             </view>
           </view>
@@ -100,8 +40,8 @@
     <view class='float-box'>
       <view class='edit' wx:if='{{isEdit}}'>
         <view class='all-select'>
-          <span class='select' bindtap='changeAll'>
-            <icon type="success" color="red" size='20'></icon> 
+          <span class='select' data-type='checkAll' bindtap='checkAndInput'>
+            <icon type="success" color="red" size='20' wx:if='{{obj.footer.checkAll.checked}}'></icon> 
           </span>
           全选
         </view>
@@ -111,15 +51,15 @@
         </view>
       </view>
       <view class='settlement' wx:if='{{!isEdit}}'>
-        <view class='all-select'>
+        <view class='all-select' data-type='checkAll' bindtap='checkAndInput'>
           <span class='select'>
-            <icon type="success" color="red" size='20'></icon> 
+            <icon type="success" color="red" size='20' wx:if='{{obj.footer.checkAll.checked}}'></icon> 
           </span>
           全选
         </view>
-        <view class='js-box'>
-          <view class='total-num'>合计：<span class="ui-price-icon">￥</span><text>5000</text></view>
-          <view class='btn'>结算(<text>28</text>)</view>
+        <view class='js-box' bindtap='submitFun'>
+          <view class='total-num'>合计：<span class="ui-price-icon">￥</span><text>{{obj.footer.price}}</text></view>
+          <view class='btn'>结算(<text>{{obj.footer.submit.value}}</text>)</view>
         </view>
       </view>
     </view>

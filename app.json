@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/shopping/shopping",
     "pages/index/index",
     "pages/productDetails/productdetails",
     "pages/personal/user/user",
@@ -9,7 +10,6 @@
     "pages/personal/collect-coupons/collect-coupons",
     "pages/sort/sort",
     "pages/personal/my-coupon/my-coupon",
-    "pages/shopping/shopping",
     "pages/logs/logs"
   ],
   "permission": {

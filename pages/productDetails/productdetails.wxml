@@ -1,5 +1,5 @@
 <!--pages/productDetails/productdetails.wxml-->
-<view class='container' wx:if='{{!loading}}'>
+<view class='container' wx:if='{{loading}}'>
  <scroll-view scroll-y style="height: {{screenHeight}}px;" scroll-into-view="{{toView}}" bindscrolltoupper='upper' bindscroll="scroll">
     <view class='group-warp' id="img">
       <view class='module-wrap-one'> 
@@ -12,9 +12,9 @@
         </swiper>
         <view class='current'>{{slideIndex}}/{{obj.item.images.length}}</view>
         <view class='right-btns {{isFixed?"btn-fixed":""}}'>
-          <icon class='iconfont icon-sousuo'></icon>
-          <icon class='iconfont icon-daohang'></icon>
-          <icon class='iconfont icon-gouwucheman'></icon>
+          <icon class='iconfont icon-sousuo' bindtap='switchTab' data-type='search'></icon>
+          <icon class='iconfont icon-gouwucheman' bindtap='switchTab' data-type='shopping'></icon>
+          <icon class='iconfont icon-daohang' bindtap='switchTab' data-type='sort'></icon>
           <view class='header-nav'>
             <view class='li-item {{navActive=="img"?"active": ""}}' data-type='img' bindtap='moveTap'>商品</view>
             <view class='li-item {{navActive=="evaluation"?"active": ""}}' data-type='evaluation' bindtap='moveTap'>评价</view>
@@ -80,7 +80,7 @@
         </view>
       </view>
     </view>
-    <view class='group-warp' id='evaluation'>
+    <view class='group-warp' id='evaluation' data-type='evaluation' bindtap='showMore'>
       <view class='module-props'>
         <view class='props-content'>
           <view class="l">参数</view>
@@ -95,7 +95,6 @@
           <view class='mui-tagscloud-main'>
             <view class='mui-tagscloud-title'>
               商品评价（{{obj.rate.totalCount}})
-            
               <view class="mui-tagscloud-more rule-color-main">
                 查看全部
                 <icon class='iconfont icon-xiangyou'></icon>
@@ -150,15 +149,33 @@
     <view class='group-warp' id='details'>
       <view class='newAttraction'>{{obj.item.subtitle}}</view>
       <view class='s-desc'>
-        <image wx:for='{{obj.item.tmallDescUrl}}' wx:key='index' src='{{item}}' mode="widthFix"></image>
+        <image wx:for='{{obj.item.tmallDescUrl}}' wx:key='index' src='{{item}}' lazy-load='true' mode="widthFix"></image>
       </view>
     </view>
   </scroll-view>
   <view class='s-actionBar-container'>
-    <view class='icon' bindtap='switchTab' data-typ='home'>
+    <view class='icon' bindtap='switchTab' data-type='home'>
       <icon class='iconfont icon-shouye1'></icon>
       <text>店铺</text>
     </view>
-    <view class='trade-cart'>加入购物车</view>
+    <view class='trade-cart' bindtap='addCart'>加入购物车</view>
   </view>
+  <!-- 参数 start -->
+  <view class='info-pop-position {{isShow=="evaluation"?"active":""}}' data-type='evaluationPosition' bindtap='showMore'>
+    <view class='info-pop-ups'>
+      <view class='prop-cover-container'>
+        <view class='list-info' wx:for='{{obj.props.groupProps[0]}}' wx:key='index' wx:for-index="key" wx:for-item="element">
+          <view class='item-title'>{{key}}</view>
+          <view class='info-box' wx:for='{{element}}' wx:key='index'>
+            <view class='item-info' wx:for='{{item}}' wx:key='index' wx:for-index="ele" wx:for-item="cell">
+              <view class='topic'>{{ele}}</view>
+              <view class='text'>{{cell}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cover-footer" role="button" data-type='evaluationPosition' bindtap='showMore'>确定</view>
+  </view>
+  <!-- 参数 end -->
 </view>

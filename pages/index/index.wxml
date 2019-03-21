@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" wx:if='{{loading}}'>
   <view class="top-view-home">
     <view class="area-box">{{mapInfo.city}} <span class="iconfont icon-xiala-"></span></view>
     <view class="search-input">

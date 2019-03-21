@@ -211,6 +211,28 @@ function getCountdown(val) {
   return hour + "小时" + minute + "分钟";
 }
 
+/**
+ * 保留两位小数的方法
+ * @param {*} num 传入的数字
+ **/
+function toDecimal2 (num) {
+  var f = parseFloat(num);
+  if (isNaN(f)) {
+    return false;
+  }
+  var f = (Math.round(num * 100) / 100).toFixed(2);
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + 2) {
+    s += '0';
+  }
+  return s;
+}
+
 module.exports = {
   formatTime: formatTime,
   showModal: showModal,
@@ -223,4 +245,5 @@ module.exports = {
   limitedTime: limitedTime,
   getDate: getDate,
   getCountdown: getCountdown,
+  toDecimal2: toDecimal2,
 }

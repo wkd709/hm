@@ -41,11 +41,11 @@
   line-height: 56rpx;
 }
 .order-list .total-shop .iconfont {
-  font-size: 30rpx;
+  font-size: 34rpx;
   margin-right: 10rpx;
 }
 .order-list .grid-main {
-  height: 160rpx;
+  height: 170rpx;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -54,7 +54,8 @@
 .order-list .grid-main .order-des {
   height: 100%;
   overflow: hidden;
-  margin-left: 20rpx;
+  margin-left: 10rpx;
+  flex: 1;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -67,6 +68,15 @@
   flex-direction: column;
   justify-content: space-between;
   margin-left: 10rpx;
+}
+.order-list .grid-main .order-des .des .edit-sku .sku-item{
+  font-size: 24rpx;
+  background-color: #f5f5f5;
+  border-radius: 10rpx;
+  display: inline-block;
+  padding: 0 15rpx;
+  color: #999;
+  margin-right: 8rpx;
 }
 .order-list .grid-main .order-des .bottom {
   display: flex;
