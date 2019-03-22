@@ -1,0 +1,62 @@
+<!--pages/confirmOrder/confirmOrder.wxml-->
+<view class='container confirmOrder-box'>
+  <view class='group-box address-box'>
+    <view class='icon'><icon class='iconfont icon-dingwei'></icon></view>
+    <view class='address-text-box'>
+      <view class='text-title'>王某某 <text>18870447515</text> </view>
+      <view class='address-item'>四川省成都市双流区华阳镇街道景明达小区5512号</view>
+      <view class='tip-p'>收货不方便时，可选择免费代收货服务</view>
+    </view>
+    <view class='right-icon'><icon class='iconfont icon-xiangyou'></icon></view>
+  </view>
+  <view class='group-box order-box' wx:for='{{obj.list}}' wx:key='index'>
+    <view class='title-view'><icon class='iconfont icon-shouye1'></icon>{{item.seller}}</view>
+    <view class='grid-box'>
+      <view class='order-des-item' wx:for='{{item.order}}' wx:key='index' wx:for-item="cell">
+        <view  class='img'><image src='{{cell.pic}}'></image></view>
+        <view class='des-center'>
+          <view class='title'>
+            <view class='title-text'>{{cell.title}}</view>
+            <view class='right'>
+              <text class='price'>￥{{cell.price.now}}</text>
+              <text class='num'>×{{cell.amount.now}}</text>
+            </view>
+          </view>
+          <view class='edit-sku'>
+            <view class='sku-item'>{{cell.sku? cell.sku.title : ""}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='other-box'>
+        <view class='other-item'>
+          <view class='text-title'>配送方式</view>
+          <view class='txt'>普通配送</view>
+          <view class='right'>快递  免邮</view>
+        </view>
+        <view class='other-item'>
+          <view class='text-title'>店铺优惠</view>
+          <view class='txt'>全称包邮</view>
+        </view>
+        <view class='other-item'>
+          <view class='text-title'>开具发票</view>
+          <view class='right'>本次不开具发票 <view class='iconfont icon-xiangyou'></view></view>
+        </view>
+        <view class='other-item input-item'>
+          <view class='text-title'>订单备注</view>
+          <view class='input'> <input placeholder="选填，请先和商家协商一致"/></view>
+        </view>
+        <view class='total-price'>
+          共{{item.orderNum}}件 
+          <view class='text'>小计：<text>￥{{item.totalPrice}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='buy-bottom'>
+    <view class='btn-form'>提交订单</view>
+    <view class='hj-box'>
+      <text class='total-num'>共{{obj.totalNum}}件，</text>
+      合计：<text class='total-price'>￥{{obj.totalPrice}}</text>
+    </view>
+  </view>
+</view>

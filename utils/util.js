@@ -65,38 +65,6 @@ function showToast(title,status) {
 }
 
 /**
- * function 缓存
- * 参数: key 字段名 / value 值
- **/
-function setStorage(key, value) {
-  wx.setStorage({
-    key: key,
-    data: value
-  })
-  return new Promise((resolve, reject) => {
-
-  })
-}
-
-/**
- * function 获取
- * 参数: key 字段名
- **/
-function getStorage(key) {
-  return new Promise((resolve, reject) => {
-    wx.getStorage({
-      key: key,
-      success(res) {
-        resolve(res.data);
-      },
-      fail(err) {
-        reject(err);
-      }
-    })
-  })
-}
-
-/**
  * 将小程序的API封装成支持Promise的API
  * @params fn {Function} 小程序原始API，如wx.login
  */
@@ -233,12 +201,71 @@ function toDecimal2 (num) {
   return s;
 }
 
+var redis = "redis";
+
+/**
+ * 设置
+ * k 键key
+ * v 值value
+ * t 秒
+ */
+function setStorage(k, v, t) {
+  wx.setStorageSync(k, v);
+  var seconds = parseInt(t);
+  if (seconds > 0) {
+    var newtime = Date.parse(new Date())
+    newtime = newtime / 1000 + seconds;
+    wx.setStorageSync(k + redis, newtime + "");
+  } else {
+    wx.removeStorageSync(k + redis);
+  }
+}
+/**
+ * 获取
+ * k 键key
+ */
+function getStorage(k) {
+  var deadtime = parseInt(wx.getStorageSync(k + redis));
+  var res = wx.getStorageSync(k);
+  return new Promise((resolve, reject) => {
+    if (deadtime) {
+      if (parseInt(deadtime) < Date.parse(new Date()) / 1000) {
+        wx.removeStorageSync(k);
+        console.log("过期了");
+        reject(null);
+      }
+    }
+    if (res) {
+      resolve(res);
+    } else {
+      reject(null);
+    }
+  });
+}
+
+/**
+ * 删除
+ */
+function removeStorage(k) {
+  wx.removeStorageSync(k);
+  wx.removeStorageSync(k + redis);
+}
+
+/**
+ * 清除所有key
+ */
+function clearStorage() {
+  wx.clearStorageSync();
+}
+
 module.exports = {
   formatTime: formatTime,
   showModal: showModal,
   showToast: showToast,
   setStorage: setStorage,
   getStorage: getStorage,
+  removeStorage: removeStorage,
+  clearStorage: clearStorage,
   getSetting: getSetting,
   wxPromisify: wxPromisify,
   tradingStatus: tradingStatus,

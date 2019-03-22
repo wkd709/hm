@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/shopping/shopping",
+    "pages/confirmOrder/confirmOrder",
     "pages/index/index",
     "pages/productDetails/productdetails",
     "pages/personal/user/user",

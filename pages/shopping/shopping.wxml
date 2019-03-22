@@ -46,8 +46,8 @@
           全选
         </view>
         <view class='btn-box'>
-          <view class='btn red'>删除</view>
-          <view class='btn yellow'>移入收藏夹</view>
+          <view class='btn red' data-type='del' bindtap='tapBtn'>删除</view>
+          <view class='btn yellow' data-type='collection' bindtap='tapBtn'>移入收藏夹</view>
         </view>
       </view>
       <view class='settlement' wx:if='{{!isEdit}}'>

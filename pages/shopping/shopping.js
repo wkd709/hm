@@ -1,7 +1,7 @@
 //获取应用实例
 const { regeneratorRuntime } = global;
 import { wxRequest } from '../../utils/http.js';
-import { toDecimal2,showToast } from '../../utils/util.js';
+import { toDecimal2, showToast, showModal, setStorage } from '../../utils/util.js';
 const app = getApp();
 
 Page({
@@ -10,6 +10,8 @@ Page({
     isEdit: false,
     editName: '管理',
     obj: {},
+    checkNumber: 0,
+    orderObj:{},
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,7 +27,9 @@ Page({
       let data = res.data;
       this.setData({ 'obj': data, "loading": true });
       console.log(res.data);
-    });
+    }).catch(err => {
+      showToast(err);
+    });;
   },
   isEditTap(event) {//点击管理/完成
     this.setData({ 
@@ -111,9 +115,66 @@ Page({
       });
     });
 
-    this.setData({ "obj": data});
+    this.setData({ "obj": data, 'checkNumber': checkNum});
   },
   submitFun() {
-    showToast('跳结算页面');
+    if (this.data.checkNumber<=0) {
+      showToast('您还没有选择宝贝哦!', false);
+      return false;
+    }
+    let data = this.data.obj;
+    let order = {
+      totalPrice: data.footer.price,
+      totalNum: 0,
+      list: [],
+      address: {},
+    };
+
+    data.list.forEach((key, index) => {
+      key.totalPrice = 0;
+      key.orderNum = 0;
+      let item = {
+        order: [],
+        seller: key.seller,
+        shopId: key.shopId,
+        title: key.title,
+        totalPrice: 0,
+        orderNum: 0,
+      };
+      key.order.forEach((ele, ind) => {
+        if (ele.checked) {
+          item.totalPrice = toDecimal2(item.totalPrice * 1 + ele.price.now * ele.amount.now);
+          item.orderNum = item.orderNum * 1 + ele.amount.now;
+          order.totalNum = order.totalNum*1 + ele.amount.now;
+          item.order.push(ele);
+        }
+      })
+      if (item.order && item.order.length>0) {
+        order.list.push(item);
+      }
+    })
+    setStorage('order', order,10000);
+    wx.navigateTo({ url: '/pages/confirmOrder/confirmOrder'});
+  },
+  tapBtn(e) {
+    let dataset = JSON.stringify(e.target.dataset) !== "{}" ? e.target.dataset : e.currentTarget.dataset;
+    console.log(dataset);
+    if (this.data.checkNumber <= 0) {
+      showToast('您还没有选择宝贝哦!', false);
+      return false;
+    }
+    // 删除
+    if (dataset.type == 'del') {
+      showModal('删除','确定要删除吗?')
+      .then(res=>{
+        showToast('删除成功','success');
+      })
+      .catch(err=>{});
+    }
+
+    // 移入收藏夹
+    if (dataset.type == 'collection') {
+      showToast('收藏成功', 'success');
+    }
   },
 });

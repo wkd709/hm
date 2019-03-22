@@ -120,6 +120,8 @@ Page({
     }).then((res) => {
       let data = res.data;
       this.setData({ "recommendLikes": data });
+    }).catch((err)=> {
+      console.log(err);
     });
     this.setData({'loading':true});
   },
